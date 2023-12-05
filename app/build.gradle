@@ -35,9 +35,12 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
-    buildFeatures {
-        viewBinding true
+    buildFeatures{
+        viewBinding  true
+        dataBinding  true
+        buildConfig  true
     }
+
 }
 
 dependencies {
