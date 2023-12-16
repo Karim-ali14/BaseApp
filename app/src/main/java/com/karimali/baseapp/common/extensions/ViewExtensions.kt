@@ -28,18 +28,10 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.*
 import androidx.viewpager2.widget.ViewPager2
+import com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.karumi.dexter.Dexter
-import com.karumi.dexter.MultiplePermissionsReport
-import com.karumi.dexter.PermissionToken
-import com.karumi.dexter.listener.PermissionRequest
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener
-import com.karimali.oneapp.provider.shared.utils.helper.DividerItemDecorator
-import com.karimali.baseapp.shared.constants.Constants
-import com.karimali.teacherpackage.shared.ui.adapters.GenericRecyclerAdapter
-import com.karimali.baseapp.ui.custom.BottomDropDownSpinner.DropDownBottomSheet
 import com.karimali.baseapp.ui.dialogs.OptionsBottomSheet
 import com.skydoves.androidveil.VeilRecyclerFrameView
 import java.util.*
@@ -49,12 +41,14 @@ import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import com.karimali.baseapp.MainActivity
 import com.karimali.baseapp.R
+import com.karimali.baseapp.common.utils.Constants
+import com.karimali.baseapp.common.utils.DividerItemDecorator
 import com.karimali.baseapp.di.AppSharedPrefs
+import com.karimali.baseapp.ui.activities.MainActivity
 import com.karimali.baseapp.ui.adapters.AdapterBindings
-import com.karimali.teacherpackage.shared.utils.helper.extensions.closeKeyboard
-import com.karimali.teacherpackage.shared.utils.helper.extensions.makeCustomTintColorStateList
+import com.karimali.baseapp.ui.adapters.GenericRecyclerAdapter
+import com.karimali.baseapp.ui.dialogs.DropDownBottomSheet
 import com.tbuonomo.viewpagerdotsindicator.setPaddingHorizontal
 
 typealias OnItemPressed = (Int) -> Unit
@@ -122,7 +116,7 @@ fun TextInputLayout.urlValidation(errorMsg:String = "Not Valid URL") : Boolean {
 
     when {
         textInput!!.text!!.trim().isEmpty() -> {
-            this.error = textInput?.context?.getString(R.string.required)
+            this.error = context.getString(R.string.required)
             isValid = false
             return isValid
         }
@@ -223,7 +217,7 @@ fun View.toggleEnabled(enabled:Boolean){
 
 fun TextView.toggleEnabledText(enabled:Boolean){
     if(enabled){
-        setTextColor(ContextCompat.getColor(this.context,R.color.app_second_color))
+        setTextColor(ContextCompat.getColor(this.context,R.color.dark_blue_color))
         this.isClickable = true
         this.isFocusable = true
         this.isEnabled = true
@@ -263,28 +257,6 @@ fun Spinner.validation(errorMsg: String = "Required") {
     errorText.error = ""
     errorText.setTextColor(Color.RED)
     errorText.text = errorMsg
-}
-
-fun RecyclerView.setDivider(@DrawableRes drawableRes: Int) {
-    val drawable = ContextCompat.getDrawable(
-        this.context,
-        drawableRes
-    )
-    val divider = DividerItemDecorator(
-        drawable!!
-    )
-    addItemDecoration(divider)
-}
-
-fun VeilRecyclerFrameView.setDivider(@DrawableRes drawableRes: Int) {
-    val drawable = ContextCompat.getDrawable(
-        this.context,
-        drawableRes
-    )
-    val divider = DividerItemDecorator(
-        drawable!!
-    )
-    getRecyclerView().addItemDecoration(divider)
 }
 
 fun CircularProgressButton.restore(){
@@ -367,36 +339,16 @@ fun Context.getBitmapFromVector(vectorResId:Int): BitmapDescriptor? {
     }
 }
 
-fun Context.checkPerm(permissions:Collection<String>,onPermission : (Boolean) -> Unit){
-    Dexter.withContext(this)
-        .withPermissions(permissions)
-        .withListener(object : MultiplePermissionsListener {
-            override fun onPermissionsChecked(perm: MultiplePermissionsReport?) {
-                onPermission(true)
-            }
-            override fun onPermissionRationaleShouldBeShown(
-                p0: MutableList<PermissionRequest>?,
-                p1: PermissionToken?
-            ) {
-                p1?.continuePermissionRequest()
-                onPermission(false)
-            }
-        })
-        .check()
-}
-
-fun MainActivity.setUpNavController(activeDestinations : ArrayList<Int>,navController: NavController) {
+fun MainActivity.setUpNavController(activeDestinations : ArrayList<Int>, navController: NavController) {
     NavigationUI.setupWithNavController(binding.bottomNav,navController)
     binding.bottomNav.setOnNavigationItemReselectedListener {  }
     navController.addOnDestinationChangedListener { controller, destination, arguments ->
         if(activeDestinations.contains(destination.id)) {
-            binding.content.setPadding(0,0,0,100)
-            binding.bottomAppBar.visible()
-//            binding.addPackageBtu.visible()
+//            binding.content.setPadding(0,0,0,100)
+//            binding.bottomAppBar.visible()
         } else {
-            binding.content.setPadding(0,0,0,0)
-            binding.bottomAppBar.gone()
-//            binding.addPackageBtu.gone()
+//            binding.content.setPadding(0,0,0,0)
+//            binding.bottomAppBar.gone()
         }
     }
 }
@@ -418,48 +370,20 @@ fun MaterialToolbar.setUpWithNavigation(activity:MainActivity,
             setPaddingHorizontal(-10)
         }
 
-        if(goneIn.contains(destination.id)){
-            activity.binding.toolbarLayout.gone()
-        }
-        else {
-            activity.binding.toolbarLayout.visible()
-        }
+//        if(goneIn.contains(destination.id)){
+//            activity.binding.toolbarLayout.gone()
+//        }
+//        else {
+//            activity.binding.toolbarLayout.visible()
+//        }
 
         if(!configuration.topLevelDestinations.contains(destination.id)){
-            setNavigationIcon(R.drawable.back_icon)
+//            setNavigationIcon(R.drawable.back_icon)
         }
 
         isTitleCentered = false
         isSubtitleCentered = false
         setSubtitleTextColor(ContextCompat.getColor(context,R.color.black))
-
-//        subtitle = when(destination.id){
-//            R.id.loginScreen -> context.getString(R.string.login_to_continue)
-//            R.id.userSignupForm -> {
-//                Log.i("SignUp","Args ${destination.arguments}")
-//                val isFamily = arguments?.getBoolean("isFamily",false)
-//                if(isFamily == true) context.getString(R.string.sign_up_as_family) else context.getString(R.string.sign_up_as_person)
-//            }
-//            R.id.home2 -> {
-//                Log.i("SignUp","Args ${destination.arguments}")
-//                setSubtitleTextColor(ContextCompat.getColor(context,R.color.app_green_color))
-//                context.getString(R.string.welcome_friend)
-//            }
-//            else -> null
-//        }
-
-//        when(destination.id){
-//            R.id.fahemPlanDetailsFragment -> {
-//                title = arguments?.getParcelable<Plan>("Plan")?.name ?: ""
-//            }
-//            R.id.fahemPlanTasks -> {
-//                val dayDate = arguments?.getParcelable<Day>("Day")?.date?.toDate(Locale.ENGLISH)
-//                isTitleCentered = true
-//                isSubtitleCentered = true
-//                title = dayDate?.dayOfWeek(fullDayName = true) ?: ""
-//                subtitle = dayDate?.toDateString("dd/MM/yyyy")
-//            }
-//        }
     }
 }
 
@@ -473,7 +397,8 @@ fun MainActivity.handleToolBarProcess(
     showFilterButton: ArrayList<Int>,
     showDeleteAccountButton: ArrayList<Int>,
     showFavoriteAndShareLayoutDestinations: ArrayList<Int>,
-    navController: NavController,sharedPrefs: AppSharedPrefs
+    navController: NavController,
+//    sharedPrefs: AppSharedPrefs
 ){
     navController.addOnDestinationChangedListener { controller, destination, arguments ->
 //        val clientModel = sharedPrefs.getSavedData<ClientModel>(Constants.USER_KEY)
@@ -543,10 +468,10 @@ fun MaterialToolbar.title(title: String){
 
 fun MaterialToolbar.color(color: Int){
     setBackgroundColor(color)
-    setBackgroundResource(if(color == R.color.black) R.color.gray_bg else color)
+//    setBackgroundResource(if(color == R.color.black) R.color.gray_bg else color)
 }
 
-fun <T : Any>RecyclerView.setup(customAdapter:GenericRecyclerAdapter<T>,isLinear:Boolean = true,cols : Int? = 2,isHorizontal : Boolean = false){
+fun <T : Any>RecyclerView.setup(customAdapter: GenericRecyclerAdapter<T>, isLinear:Boolean = true, cols : Int? = 2, isHorizontal : Boolean = false){
     val orientation = if(isHorizontal) RecyclerView.HORIZONTAL else RecyclerView.VERTICAL
     adapter = customAdapter
     layoutManager =   if(isLinear) LinearLayoutManager(context,orientation,false) else GridLayoutManager(context,cols?:2)
@@ -658,6 +583,17 @@ fun RecyclerView.attachDragHelper(itemTouchHelper : ItemTouchHelper ){
     itemTouchHelper.attachToRecyclerView(this)
 }
 
+fun RecyclerView.setDivider(@DrawableRes drawableRes: Int) {
+    val drawable = ContextCompat.getDrawable(
+        this.context,
+        drawableRes
+    )
+    val divider = DividerItemDecorator(
+        drawable!!
+    )
+    addItemDecoration(divider)
+}
+
 fun RecyclerView.removeDragHelper(itemTouchHelper : ItemTouchHelper ){
     itemTouchHelper.attachToRecyclerView(null)
 }
@@ -681,18 +617,6 @@ fun RecyclerView.animateScrollTo(position: Int){
     }
     smoothScroller.targetPosition = position
     layoutManager?.startSmoothScroll(smoothScroller)
-}
-fun MaterialToolbar.restore(navController: NavController){
-    val actionsContainer = this.getChildAt(0) as ConstraintLayout
-    color(R.color.gray_bg)
-    isTitleCentered = true
-    subtitle = null
-
-    actionsContainer.forEach { view ->
-        view.gone()
-        view.setOnClickListener {  }
-    }
-
 }
 
 fun <T : View>MaterialToolbar.getActionById(actionId : Int) : T {

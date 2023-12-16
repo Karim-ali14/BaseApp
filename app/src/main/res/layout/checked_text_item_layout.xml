@@ -4,8 +4,8 @@
     android:layout_height="wrap_content"
     android:background="@null"
     android:button="@null"
-    android:buttonTint="@color/app_green_color"
+    android:buttonTint="@color/green_color"
     android:text="Test"
-    android:textColor="@color/radio_text_color">
+    android:textColor="@color/black">
 
 </RadioButton>

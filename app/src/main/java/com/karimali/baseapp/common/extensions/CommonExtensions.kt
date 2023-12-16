@@ -10,9 +10,6 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.karimali.baseapp.shared.result.ResultState
-import com.karimali.oneapp.provider.shared.utils.Utils
-
 import org.ocpsoft.prettytime.PrettyTime
 import java.lang.reflect.GenericDeclaration
 import java.lang.reflect.Type
@@ -31,8 +28,11 @@ import android.content.ClipData
 import android.content.ClipboardManager
 
 import android.content.Context.CLIPBOARD_SERVICE
+import com.karimali.baseapp.common.models.ResultState
 import java.time.LocalDate
+import java.time.OffsetDateTime
 import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 
 
 infix fun<T> Boolean.then(first:T) : T? = if(this) first else null
@@ -74,7 +74,7 @@ fun Double.convertToPriceWithCurrency(currency: String) : String{
 @RequiresApi(Build.VERSION_CODES.O)
 fun String.convertToAgo(): String {
     val prettyTime = PrettyTime(Locale.getDefault())
-    return prettyTime.format(Date(Utils.dateFormat(this, Locale.ENGLISH)))
+    return prettyTime.format(Date(dateFormat(this, Locale.ENGLISH)))
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -87,7 +87,7 @@ fun Date.convertToAgo(): String {
 fun String.convertTo12HoursFormat(): String {
     return try {
         val mDate = this.replace(" ","T") + ".000000Z"
-        val parsedDate =  Date(Utils.dateFormat(mDate))
+        val parsedDate =  Date(dateFormat(mDate))
         Log.i("Date","$parsedDate")
         val dateFormat: DateFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
             dateFormat.format(parsedDate)
@@ -97,16 +97,28 @@ fun String.convertTo12HoursFormat(): String {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 fun String.toDate(locale: Locale? = null): Date? {
     return try {
         //Log.i("Expire"," Date Here ${Date(Utils.dateFormat(mDate))}")
-        Date(Utils.dateFormat(this,locale = Locale.ENGLISH))
+        Date(dateFormat(this,locale = Locale.ENGLISH))
     }catch (e:Exception){
         Log.i("Expire","Fail $e")
         null
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
+fun dateFormat(date:String, locale: Locale? = null, format : String ? = "EEE, d MMM yyyy HH:mm:ss") : String {
+    return try {
+        val parsedDate = OffsetDateTime.parse(date)
+        val formatter = DateTimeFormatter.ofPattern(format, locale ?: Locale.getDefault())
+        formatter.format(parsedDate)
+    }catch (e:Exception){
+        ""
+    }
+}
+@RequiresApi(Build.VERSION_CODES.O)
 fun LocalDate.toDate(): Date = Date.from(this.atStartOfDay(ZoneId.systemDefault()).toInstant())
 
 

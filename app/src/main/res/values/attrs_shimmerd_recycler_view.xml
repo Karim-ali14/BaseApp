@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="ShimmerdRecyclerView">
+        <attr name="listItems" format="reference" />
+    </declare-styleable>
+</resources>

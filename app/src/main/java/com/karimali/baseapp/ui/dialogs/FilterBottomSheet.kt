@@ -20,7 +20,7 @@ package com.karimali.baseapp.ui.dialogs
 //import com.pomac.hajastclient.ui.adapters.loadImage
 //import com.pomac.teacherpackage.shared.ui.adapters.GenericRecyclerAdapter
 //import com.pomac.teacherpackage.shared.ui.adapters.GenericSimpleRecyclerBindingInterface
-//import com.pomac.teacherpackage.shared.utils.helper.extensions.showErrorToast
+//import com.karimali.baseapp.common.extensions.showErrorToast
 //import com.pomac.teacherpackage.shared.utils.helper.extensions.textChanges
 //import kotlinx.coroutines.CoroutineScope
 //import kotlinx.coroutines.flow.debounce

@@ -58,8 +58,11 @@ dependencies {
     implementation "androidx.viewpager2:viewpager2:1.1.0-beta02"
     implementation 'com.tbuonomo:dotsindicator:4.2'
     implementation 'com.github.zhpanvip:viewpagerindicator:1.2.3'
+    // Swipe Refresh Layout
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
-                      /*** UI ***/
+
+    /*** UI ***/
     //Shimmer RecyclerView
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
     implementation "com.github.skydoves:androidveil:1.1.2"
@@ -71,6 +74,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     // Toast
     implementation 'com.pranavpandey.android:dynamic-toasts:4.1.0'
+
 
     // Core VM Android and App Compat.
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
@@ -100,6 +104,18 @@ dependencies {
     // Image Loading.
     implementation "com.github.bumptech.glide:glide:4.12.0"
     kapt "com.github.bumptech.glide:compiler:4.11.0"
+
+
+    //Maps
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+    implementation 'com.google.android.gms:play-services-maps:18.2.0'
+
+    //Pick Files
+    implementation 'com.github.androidbuffer:kotlinfilepicker:v0.0.4-alpha'
+
+    // convert date to day month year
+    implementation 'org.ocpsoft.prettytime:prettytime:4.0.4.Final'
+
 }
 
 // Allow references to generated code
