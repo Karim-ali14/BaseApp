@@ -11,8 +11,11 @@ import androidx.core.view.get
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import com.karimali.baseapp.R
+import com.karimali.baseapp.common.extensions.isVisible
+import com.karimali.baseapp.common.extensions.showErrorToast
 import com.karimali.baseapp.common.extensions.textChanges
 import com.karimali.baseapp.common.extensions.toDp
+import com.karimali.baseapp.common.extensions.visible
 import com.karimali.baseapp.databinding.OptionsDialogBottomsheetBinding
 import com.karimali.baseapp.ui.base.RoundedBottomSheetDialogFragment
 import kotlinx.coroutines.CoroutineScope

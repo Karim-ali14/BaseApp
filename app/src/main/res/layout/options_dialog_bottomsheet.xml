@@ -24,7 +24,6 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="TextView"
-            style="@style/textStyleWithFSABoldAnd18sp"
             android:visibility="visible" />
     </FrameLayout>
 
@@ -37,13 +36,11 @@
         android:layout_margin="@dimen/defaultMarginSide"
         android:drawablePadding="@dimen/_7sdp"
         android:ems="10"
-        android:fontFamily="@font/fsalbert_regular"
         android:hint="@string/search"
         android:imeOptions="actionSearch"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:padding="14dp"
-        android:textColorHint="@color/edittext_hint_color"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,9 +71,9 @@
 
            </RadioGroup>
 
-            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
                 android:id="@+id/done_btn"
-                style="@style/normal_button"
+                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginBottom="@dimen/_15sdp"
@@ -84,7 +81,6 @@
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 android:gravity="center"
                 android:shadowRadius="9.0"
-                android:text="@string/done"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="@color/white"

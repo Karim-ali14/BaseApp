@@ -2,15 +2,16 @@ package com.karimali.baseapp.ui.dialogs
 
 import android.os.Bundle
 import android.view.View
-import br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+import com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
 import com.karimali.baseapp.R
+import com.karimali.baseapp.common.extensions.gone
+import com.karimali.baseapp.common.extensions.validation
+import com.karimali.baseapp.common.extensions.visible
 import com.karimali.baseapp.databinding.TextFieldBottomsheetLayoutBinding
 import com.karimali.baseapp.ui.base.RoundedBottomSheetDialogFragment
-import com.karimali.baseapp.shared.utils.helper.extensions.gone
-import com.karimali.baseapp.shared.utils.helper.extensions.validation
-import com.karimali.baseapp.shared.utils.helper.extensions.visible
 
-class TextFieldBottomSheetDialog(var initialContent:String ?= null, val onSelect : (String, CircularProgressButton) -> Unit, val header : String ?= null, val inputType: Int ?= null, val hint : String,val buttonText : String ?= null) : RoundedBottomSheetDialogFragment<TextFieldBottomsheetLayoutBinding>(
+
+class TextFieldBottomSheetDialog(private var initialContent:String ?= null, val onSelect : (String, CircularProgressButton) -> Unit, val header : String ?= null, val inputType: Int ?= null, val hint : String, val buttonText : String ?= null) : RoundedBottomSheetDialogFragment<TextFieldBottomsheetLayoutBinding>(
     R.layout.text_field_bottomsheet_layout) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 

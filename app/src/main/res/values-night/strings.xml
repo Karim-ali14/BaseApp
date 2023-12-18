@@ -2,4 +2,5 @@
 <resources>
     <string name="required">required</string>
     <string name="no_connection">No Connection</string>
+    <string name="search">Search</string>
 </resources>

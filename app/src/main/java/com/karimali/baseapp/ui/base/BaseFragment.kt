@@ -15,20 +15,19 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.viewbinding.ViewBinding
-import br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+import com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
 import com.karimali.baseapp.ui.dialogs.LoadingDialog
-import com.karimali.baseapp.shared.result.ResultState
 import com.google.android.material.snackbar.Snackbar
 import android.widget.TextView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.karimali.baseapp.MainActivity
 import com.karimali.baseapp.R
+import com.karimali.baseapp.common.extensions.gone
+import com.karimali.baseapp.common.extensions.restore
+import com.karimali.baseapp.common.extensions.visible
+import com.karimali.baseapp.common.models.ResultState
 import com.karimali.baseapp.ui.custom.ShimmerdRecyclerView
-import com.karimali.baseapp.shared.utils.helper.extensions.gone
-import com.karimali.baseapp.shared.utils.helper.extensions.restore
-import com.karimali.baseapp.shared.utils.helper.extensions.visible
-import com.karimali.teacherpackage.shared.ui.adapters.GenericRecyclerAdapter
-import com.karimali.teacherpackage.shared.utils.helper.extensions.*
+import com.karimali.baseapp.ui.activities.MainActivity
+import com.karimali.baseapp.ui.adapters.GenericRecyclerAdapter
 import com.skydoves.androidveil.VeilRecyclerFrameView
 
 
@@ -200,7 +199,7 @@ open class BaseFragment<T : ViewBinding>(private val inflate : Inflate<T>, layou
         result: ResultState<T>,
         withShimmer : ShimmerdRecyclerView<T> ? = null,
         withSwipe: SwipeRefreshLayout? = null,
-        adapter: GenericRecyclerAdapter<Any> ?= null,
+        adapter: GenericRecyclerAdapter<Any>?= null,
         withPlaceHolder : View? = null,
         onLoading: () -> Unit = {},
         onComplete: () -> Unit = {},
@@ -261,6 +260,8 @@ open class BaseFragment<T : ViewBinding>(private val inflate : Inflate<T>, layou
                 withShimmer?.gone()
                 withShimmer?.shimmered(false)
             }
+
+            else -> {}
         }
     }
 
@@ -305,6 +306,8 @@ open class BaseFragment<T : ViewBinding>(private val inflate : Inflate<T>, layou
                 withPlaceHolder?.visible()
                 shimmerRv?.unVeil()
             }
+
+            else -> {}
         }
     }
 
@@ -316,12 +319,12 @@ open class BaseFragment<T : ViewBinding>(private val inflate : Inflate<T>, layou
 
     protected fun showErrorToast(msg:String){
         //DynamicToast.makeError(requireContext(),msg,1000).show()
-        showSnake(msg,colorRes = R.color.app_red_color,icon = R.drawable.ic_baseline_error_24)
+        showSnake(msg,colorRes = R.color.red,icon = R.drawable.ic_baseline_error_24)
     }
 
     protected fun showSuccessToast(msg:String){
         //DynamicToast.makeSuccess(requireContext(),msg,1000).show()
-        showSnake(msg,colorRes = R.color.app_green_color,icon = R.drawable.ic_baseline_check_white_24)
+        showSnake(msg,colorRes = R.color.green_color,icon = R.drawable.ic_baseline_check_white_24)
     }
 
     protected fun showNormalToast(msg:String){
