@@ -1,6 +1,7 @@
 package com.karimali.baseapp.common.utils
 
 import android.Manifest
+import com.karimali.baseapp.R
 
 
 object Constants {
@@ -114,6 +115,10 @@ object Constants {
 
     var states = arrayOf(
         intArrayOf(android.R.attr.state_enabled)
+    )
+
+    val destinationWithNoBackButton = arrayOf(
+        R.id.navigation_home
     )
 
     var txtFieldStates = intArrayOf(android.R.attr.state_enabled,android.R.attr.state_focused)

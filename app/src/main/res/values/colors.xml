@@ -11,7 +11,6 @@
 
     <!-- App Colors Here -->
 
-    <color name="background_color">#101E33</color>
     <color name="dark_blue_color">#101E33</color>
     <color name="dark_orange_color">#EE7818</color>
     <color name="orange_color">#F49321</color>

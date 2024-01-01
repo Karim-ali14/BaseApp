@@ -358,9 +358,9 @@ fun MaterialToolbar.setUpWithNavigation(activity:MainActivity,
                                         activeDestinations : ArrayList<Int>,
                                         goneIn:ArrayList<Int>,
                                         navController: NavController){
-    //activity!!.setSupportActionBar(this)
+    activity.setSupportActionBar(this)
     activity.setupActionBarWithNavController(navController,configuration!!)
-    //setupWithNavController(navController,configuration!!)
+
     navController.addOnDestinationChangedListener { controller, destination, arguments ->
         Log.i("destination",destination.id.toString())
 
