@@ -3,4 +3,10 @@
     <string name="required">required</string>
     <string name="no_connection">No Connection</string>
     <string name="search">Search</string>
+    <string name="stationery">Stationery</string>
+    <string name="library">library</string>
+    <string name="welcome_to_stationery_library">Welcome to Stationery Library,\n your digital haven for all things \n stationery!</string>
+    <string name="already_have_account">Already have account?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
 </resources>
