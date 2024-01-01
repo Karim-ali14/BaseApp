@@ -68,7 +68,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:subtitleTextAppearance="@style/TextAppearance.AppCompat.Small"
                     app:subtitleTextColor="#DCDCDC"
-                    app:titleTextAppearance="@style/largeTitleStyle"
+                    app:titleTextAppearance="@style/textStyleWithInterMedium16sp"
                     app:titleTextColor="@color/black"
                     app:contentInsetStart="0dp"
                     app:contentInsetStartWithNavigation="0dp"
