@@ -5,6 +5,8 @@
     <dimen name="snack_bar_icon_padding">10dp</dimen>
 
     <dimen name="bottom_app_size">60dp</dimen>
+    <dimen name="button_app_height_50dp">50dp</dimen>
+    <dimen name="edit_text_app_height_50dp">50dp</dimen>
     <dimen name="defaultMarginSide">@dimen/_10sdp</dimen>
     <dimen name="snackbar_icon_padding">10dp</dimen>
     <dimen name="default_horizontal_padding">@dimen/_10sdp</dimen>

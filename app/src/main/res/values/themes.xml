@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.BaseApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.BaseApp" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/gray_color</item>
@@ -64,7 +64,7 @@
     </style>
 
     <style name="placeHolderEdittextStyleWithInterMedium14sp">
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">?attr/colorSecondaryVariant</item>
         <item name="android:fontFamily">@font/inter_medium</item>
     </style>
@@ -76,7 +76,7 @@
     </style>
 
 
-    <style name="app_normal_button">
+    <style name="app_normal_button_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/_42sdp</item>
         <item name="android:textColor">@color/white</item>
@@ -89,4 +89,13 @@
         <item name="android:background">@drawable/normal_button_shape</item>
     </style>
 
+    <style name="app_edit_text_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/edit_text_app_height_50dp</item>
+        <item name="android:textColor">?attr/colorSecondaryVariant</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColorHint">@color/gray_color</item>
+    </style>
 </resources>

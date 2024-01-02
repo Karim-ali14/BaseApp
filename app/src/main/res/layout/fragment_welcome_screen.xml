@@ -66,7 +66,7 @@
     </LinearLayout>
 
     <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
-        style="@style/app_normal_button"
+        style="@style/app_normal_button_style"
         android:layout_marginHorizontal="@dimen/default_horizontal_padding"
         app:layout_constraintBottom_toTopOf="@id/already_have_account_ly"
         app:layout_constraintStart_toStartOf="parent"

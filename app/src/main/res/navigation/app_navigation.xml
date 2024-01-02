@@ -13,7 +13,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/splashScreen"
-        android:name="com.karimali.baseapp.ui.fragments.SplashScreen"
+        android:name="com.karimali.baseapp.ui.fragments.auth.LoginScreen"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" />
 </navigation>
