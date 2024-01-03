@@ -117,8 +117,17 @@ object Constants {
         intArrayOf(android.R.attr.state_enabled)
     )
 
-    val destinationWithNoBackButton = arrayOf(
+    val mainAppScreensWithBottomBar = arrayListOf(
         R.id.navigation_home
+    )
+    val destinationWithNoBackButton = arrayListOf(
+        R.id.navigation_home
+    )
+    val destinationWithToolBar = arrayListOf(
+        R.id.navigation_home
+    )
+    val destinationShowSkipText = arrayListOf(
+        R.id.loginScreen
     )
 
     var txtFieldStates = intArrayOf(android.R.attr.state_enabled,android.R.attr.state_focused)

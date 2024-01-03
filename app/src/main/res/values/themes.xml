@@ -10,7 +10,7 @@
         <item name="colorSecondaryVariant">@color/nero_color</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -57,9 +57,15 @@
         <item name="android:fontFamily">@font/inter_medium</item>
     </style>
 
-    <style name="textStyleWithInterMedium13sp">
+    <style name="textStyleWithColorOnPrimaryInterMedium13sp">
         <item name="android:textSize">13sp</item>
         <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="textStyleWithHintColorInterMedium13sp">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/hint_color</item>
         <item name="android:fontFamily">@font/inter_medium</item>
     </style>
 

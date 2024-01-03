@@ -339,43 +339,43 @@ fun Context.getBitmapFromVector(vectorResId:Int): BitmapDescriptor? {
     }
 }
 
-fun MainActivity.setUpNavController(activeDestinations : ArrayList<Int>, navController: NavController) {
+fun MainActivity.setUpBottomNavWithNavController(activeDestinations : ArrayList<Int>, navController: NavController) {
     NavigationUI.setupWithNavController(binding.bottomNav,navController)
     binding.bottomNav.setOnNavigationItemReselectedListener {  }
     navController.addOnDestinationChangedListener { controller, destination, arguments ->
         if(activeDestinations.contains(destination.id)) {
-//            binding.content.setPadding(0,0,0,100)
-//            binding.bottomAppBar.visible()
+            binding.content.setPadding(0,0,0,100)
+            binding.bottomAppBar.visible()
         } else {
-//            binding.content.setPadding(0,0,0,0)
-//            binding.bottomAppBar.gone()
+            binding.content.setPadding(0,0,0,0)
+            binding.bottomAppBar.gone()
         }
     }
 }
 
 fun MaterialToolbar.setUpWithNavigation(activity:MainActivity,
+                                        destinationWithNoBackButton : ArrayList<Int>,
+                                        destinationWithNoToolBar:ArrayList<Int>,
                                         configuration : AppBarConfiguration ?= null ,
-                                        activeDestinations : ArrayList<Int>,
-                                        goneIn:ArrayList<Int>,
                                         navController: NavController){
     activity.setSupportActionBar(this)
     activity.setupActionBarWithNavController(navController,configuration!!)
-
+    setNavigationIcon(R.drawable.back_icon)
     navController.addOnDestinationChangedListener { controller, destination, arguments ->
         Log.i("destination",destination.id.toString())
 
-        if(activeDestinations.contains(destination.id)){
+        if(destinationWithNoBackButton.contains(destination.id)){
             setPaddingHorizontal(35)
         }else{
             setPaddingHorizontal(-10)
         }
 
-//        if(goneIn.contains(destination.id)){
-//            activity.binding.toolbarLayout.gone()
-//        }
-//        else {
-//            activity.binding.toolbarLayout.visible()
-//        }
+        if(destinationWithNoToolBar.contains(destination.id)){
+            activity.binding.toolbarLayout.gone()
+        }
+        else {
+            activity.binding.toolbarLayout.visible()
+        }
 
         if(!configuration.topLevelDestinations.contains(destination.id)){
 //            setNavigationIcon(R.drawable.back_icon)
@@ -388,70 +388,19 @@ fun MaterialToolbar.setUpWithNavigation(activity:MainActivity,
 }
 
 fun MainActivity.handleToolBarProcess(
-    showLang: ArrayList<Int>,
-    showEdit: ArrayList<Int>,
-    showSave: ArrayList<Int>,
-    showNotification: ArrayList<Int>,
-    showCancelOrder: ArrayList<Int>,
-    showFinishOrder: ArrayList<Int>,
-    showFilterButton: ArrayList<Int>,
-    showDeleteAccountButton: ArrayList<Int>,
-    showFavoriteAndShareLayoutDestinations: ArrayList<Int>,
+    showSkip: ArrayList<Int> = arrayListOf(),
     navController: NavController,
 //    sharedPrefs: AppSharedPrefs
 ){
     navController.addOnDestinationChangedListener { controller, destination, arguments ->
 //        val clientModel = sharedPrefs.getSavedData<ClientModel>(Constants.USER_KEY)
-//        binding.apply {
-//
-//            if (showLang.contains(destination.id)){
-//                lang.visible()
-//            }else{
-//                lang.gone()
-//            }
-//            if (showEdit.contains(destination.id)){
-//                editTl.visible()
-//            }else{
-//                editTl.gone()
-//            }
-//            if (showNotification.contains(destination.id) && clientModel != null){
-//                notificationIc.visible()
-//                notificationRedDot.visible()
-//            }else{
-//                notificationIc.gone()
-//                notificationRedDot.gone()
-//            }
-//            if (showSave.contains(destination.id)){
-//                save.visible()
-//            }else{
-//                save.gone()
-//            }
-//            if (showCancelOrder.contains(destination.id)){
-//                cancelOrder.visible()
-//            }else{
-//                cancelOrder.gone()
-//            }
-//            if (showFinishOrder.contains(destination.id)){
-//                finishOrder.visible()
-//            }else{
-//                finishOrder.gone()
-//            }
-//            if (showFilterButton.contains(destination.id)){
-//                filterButton.visible()
-//            }else{
-//                filterButton.gone()
-//            }
-//            if (showDeleteAccountButton.contains(destination.id)){
-//                deleteAccountBtu.visible()
-//            }else{
-//                deleteAccountBtu.gone()
-//            }
-//            if (showFavoriteAndShareLayoutDestinations.contains(destination.id)){
-//                favoriteAndShareLayout.visible()
-//            }else{
-//                favoriteAndShareLayout.gone()
-//            }
-//        }
+        binding.apply {
+            if (showSkip.contains(destination.id)){
+                skipTx.visible()
+            }else{
+                skipTx.gone()
+            }
+        }
     }
 }
 fun MaterialToolbar.center(isCenter: Boolean){

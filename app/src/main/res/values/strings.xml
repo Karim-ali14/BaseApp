@@ -14,4 +14,9 @@
     <string name="already_have_account">Already have account?</string>
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
+    <string name="skip">Skip</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget password!</string>
+    <string name="you_don_t_have_account">You don\'t have account?</string>
 </resources>

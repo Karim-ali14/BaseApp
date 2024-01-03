@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/error_text"
             android:text="@{errorMessage}"
-            style="@style/textStyleWithInterMedium13sp"
+            style="@style/textStyleWithColorOnPrimaryInterMedium13sp"
             android:textColor="@color/red"
             android:paddingHorizontal="@dimen/_5sdp"
             android:paddingVertical="@dimen/_3sdp"

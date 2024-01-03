@@ -1,8 +1,10 @@
 package com.karimali.baseapp.common.extensions
 
 import android.graphics.Color
+import android.graphics.Paint
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -94,4 +96,20 @@ fun CardView.changeCardBackground(color: String?) {
 @BindingAdapter(value = ["isRefreshing"])
 fun SwipeRefreshLayout.isRefreshing(newValue: Boolean) {
     this.isRefreshing = newValue
+}
+
+
+/////////////////////////////////////////////////////////////////////////
+// TextView .
+/////////////////////////////////////////////////////////////////////////
+
+@BindingAdapter(value = ["setLineUnderText"])
+fun TextView.setLineUnderText(setLine:Boolean){
+    if (setLine)
+        this.paintFlags = this.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+}
+@BindingAdapter(value = ["setLineAboveText"])
+fun TextView.setLineAboveText(setLine:Boolean){
+    if (setLine)
+        this.paintFlags = this.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
 }

@@ -1,33 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
         <import type="com.karimali.baseapp.common.utils.Enums.EditTextInputType"/>
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragments.auth.LoginScreen">
-
-        <com.karimali.baseapp.ui.custom.CustomAppEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:placeholderText="Phone Number"
-            app:hint="0155 55 54 54"
-            app:type="Phone"
-            android:layout_marginHorizontal="@dimen/_10sdp"/>
+        tools:context=".ui.fragments.auth.LoginScreen"
+        android:paddingHorizontal="@dimen/default_horizontal_padding">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{EditTextInputType.Text.name()}" />
+            android:id="@+id/title"
+            style="@style/textStyleWithInterSemiBold24sp"
+            android:text="@string/sign_in"
+            android:paddingVertical="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+            <com.karimali.baseapp.ui.custom.CustomAppEditText
+                android:id="@+id/phone_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:placeholderText="@string/phone_number"
+                app:hint="+123 456 789"
+                app:type="Phone"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_10sdp"
+                />
+            <com.karimali.baseapp.ui.custom.CustomAppEditText
+                android:id="@+id/password_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:placeholderText="@string/password"
+                app:hint="a14iz^d!ms"
+                app:type="Password"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_10sdp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/forget_password"
+                style="@style/textStyleWithHintColorInterMedium13sp"
+                bind:setLineUnderText="@{true}"
+                />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_25sdp"
+                />
+
+            <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+                style="@style/app_normal_button_style"
+                app:layout_constraintBottom_toTopOf="@id/already_have_account_ly"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/sign_in"
+                android:id="@+id/sign_up_btu"
+                android:layout_marginBottom="@dimen/_10sdp"
+                />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_10sdp"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingBottom="@dimen/_10sdp"
+                android:id="@+id/already_have_account_ly"
+                android:layout_gravity="center_horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/you_don_t_have_account"
+                    style="@style/textStyleWithHintColorInterMedium16sp"
+                    />
+
+                <Space
+                    android:layout_width="@dimen/_3sdp"
+                    android:layout_height="match_parent"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sign_up"
+                    style="@style/textStyleWithInterBold16sp"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -9,6 +9,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.karimali.baseapp.R
+import com.karimali.baseapp.common.extensions.setUpBottomNavWithNavController
+import com.karimali.baseapp.common.extensions.setUpWithNavigation
 import com.karimali.baseapp.common.utils.Constants
 import com.karimali.baseapp.databinding.ActivityMainBinding
 
@@ -33,13 +35,17 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
 
         appBarConfiguration = AppBarConfiguration(
-            Constants.destinationWithNoBackButton.toSet()
+            Constants.mainAppScreensWithBottomBar.toSet()
         )
 
-        setSupportActionBar(binding.toolbar2)
-
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        binding.toolbar.setUpWithNavigation(
+            this,
+            destinationWithNoBackButton = Constants.destinationWithNoBackButton,
+            destinationWithNoToolBar = Constants.destinationWithToolBar,
+            configuration = appBarConfiguration,
+            navController = navController
+        )
+        setUpBottomNavWithNavController(Constants.mainAppScreensWithBottomBar,navController)
     }
 
 }
