@@ -8,11 +8,14 @@
     <fragment
         android:id="@+id/welcomeScreen"
         android:name="com.karimali.baseapp.ui.fragments.auth.WelcomeScreen"
-        android:label="fragment_welcome_screen"
+        android:label=""
         tools:layout="@layout/fragment_welcome_screen" >
         <action
             android:id="@+id/action_welcomeScreen_to_loginScreen"
             app:destination="@id/loginScreen" />
+        <action
+            android:id="@+id/action_welcomeScreen_to_signUpScreen"
+            app:destination="@id/signUpScreen" />
     </fragment>
 
     <fragment
@@ -20,4 +23,10 @@
         android:name="com.karimali.baseapp.ui.fragments.auth.LoginScreen"
         android:label=""
         tools:layout="@layout/fragment_login_screen"/>
+
+    <fragment
+        android:id="@+id/signUpScreen"
+        android:name="com.karimali.baseapp.ui.fragments.auth.SignUpScreen"
+        android:label=""
+        tools:layout="@layout/fragment_sign_up_screen"/>
 </navigation>

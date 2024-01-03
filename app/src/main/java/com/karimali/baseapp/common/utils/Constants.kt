@@ -128,7 +128,8 @@ object Constants {
         R.id.welcomeScreen,
     )
     val destinationShowSkipText = arrayListOf(
-        R.id.loginScreen
+        R.id.loginScreen,
+        R.id.signUpScreen,
     )
 
     var txtFieldStates = intArrayOf(android.R.attr.state_enabled,android.R.attr.state_focused)
