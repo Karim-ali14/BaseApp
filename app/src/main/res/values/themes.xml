@@ -93,6 +93,7 @@
         <item name="android:paddingBottom">@dimen/_7sdp</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:background">@drawable/normal_button_shape</item>
+        <item name="android:stateListAnimator">@null</item>
     </style>
 
     <style name="app_edit_text_style">

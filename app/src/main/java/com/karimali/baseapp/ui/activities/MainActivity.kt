@@ -3,12 +3,10 @@ package com.karimali.baseapp.ui.activities
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.karimali.baseapp.R
+import com.karimali.baseapp.common.extensions.handleToolBarProcess
 import com.karimali.baseapp.common.extensions.setUpBottomNavWithNavController
 import com.karimali.baseapp.common.extensions.setUpWithNavigation
 import com.karimali.baseapp.common.utils.Constants
@@ -41,11 +39,16 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.setUpWithNavigation(
             this,
             destinationWithNoBackButton = Constants.destinationWithNoBackButton,
-            destinationWithNoToolBar = Constants.destinationWithToolBar,
+            destinationWithNoToolBar = Constants.destinationWithNoToolBar,
             configuration = appBarConfiguration,
             navController = navController
         )
         setUpBottomNavWithNavController(Constants.mainAppScreensWithBottomBar,navController)
+
+        handleToolBarProcess(
+            showSkip = Constants.destinationShowSkipText,
+            navController = navController
+        )
     }
 
 }

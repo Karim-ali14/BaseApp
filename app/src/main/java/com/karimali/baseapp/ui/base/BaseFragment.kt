@@ -381,7 +381,7 @@ open class BaseFragment<T : ViewBinding>(private val inflate : Inflate<T>, layou
     }
 
     fun useButtonHomeBack(action:() -> Unit){
-        (requireActivity() as MainActivity).binding.toolbar2.setNavigationOnClickListener {
+        (requireActivity() as MainActivity).binding.toolbar.setNavigationOnClickListener {
             action()
         }
     }

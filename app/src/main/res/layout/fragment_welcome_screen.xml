@@ -101,6 +101,7 @@
             android:layout_height="wrap_content"
             android:text="@string/sign_in"
             style="@style/textStyleWithInterBold16sp"
+            android:id="@+id/sign_in_btu"
             />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -360,7 +360,6 @@ fun MaterialToolbar.setUpWithNavigation(activity:MainActivity,
                                         navController: NavController){
     activity.setSupportActionBar(this)
     activity.setupActionBarWithNavController(navController,configuration!!)
-    setNavigationIcon(R.drawable.back_icon)
     navController.addOnDestinationChangedListener { controller, destination, arguments ->
         Log.i("destination",destination.id.toString())
 
@@ -378,7 +377,7 @@ fun MaterialToolbar.setUpWithNavigation(activity:MainActivity,
         }
 
         if(!configuration.topLevelDestinations.contains(destination.id)){
-//            setNavigationIcon(R.drawable.back_icon)
+            setNavigationIcon(R.drawable.back_icon)
         }
 
         isTitleCentered = false

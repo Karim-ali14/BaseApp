@@ -12,6 +12,16 @@ class WelcomeScreen : BaseFragment<FragmentWelcomeScreenBinding>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        eventsClick()
+    }
 
+    private fun eventsClick() {
+        binding!!.apply {
+            signInBtu.setOnClickListener {
+                navController!!.navigate(
+                    R.id.action_welcomeScreen_to_loginScreen
+                )
+            }
+        }
     }
 }

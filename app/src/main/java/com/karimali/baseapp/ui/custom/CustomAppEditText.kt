@@ -20,6 +20,31 @@ class CustomAppEditText @JvmOverloads constructor(
 
     var binding:CustomAppEditTextBinding
 
+    private var inputType : String = ""
+        set(value) {
+            field = value
+            handleInputType()
+            invalidate()
+            requestLayout()
+        }
+
+    private var showPassword :Boolean = false
+        set(value) {
+            field = value
+            handlePasswordStatus()
+
+            invalidate()
+            requestLayout()
+        }
+
+    private var errorMessage:String? = null
+        set(value){
+            field = value
+            handleErrorMessage()
+            invalidate()
+            requestLayout()
+        }
+
     init {
         binding = CustomAppEditTextBinding.inflate(
             LayoutInflater.from(context),
@@ -55,31 +80,6 @@ class CustomAppEditText @JvmOverloads constructor(
         requestLayout()
     }
 
-    private var inputType : String = ""
-        set(value) {
-            field = value
-            handleInputType()
-            invalidate()
-            requestLayout()
-        }
-
-    private var showPassword :Boolean = false
-        set(value) {
-            field = value
-            handlePasswordStatus()
-
-            invalidate()
-            requestLayout()
-        }
-
-    private var errorMessage:String? = null
-        set(value){
-            field = value
-            handleErrorMessage()
-            invalidate()
-            requestLayout()
-        }
-
     private fun handleErrorMessage() {
         binding.apply {
             this.errorMessage = this@CustomAppEditText.errorMessage ?: ""
@@ -98,6 +98,7 @@ class CustomAppEditText @JvmOverloads constructor(
     }
 
     private fun handleInputType() {
+        Log.i("TypeOfInput",inputType)
         when(inputType){
             Enums.EditTextInputType.Text.name -> {
                 binding.input.inputType = InputType.TYPE_CLASS_TEXT
@@ -112,23 +113,27 @@ class CustomAppEditText @JvmOverloads constructor(
     }
 
     private fun handlePasswordStatus() {
-        if (showPassword){
-            binding.input.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
-            binding.input.setCompoundDrawablesRelative(
-                null,
-                null,
-                AppCompatResources.getDrawable(context,R.drawable.password_eye_hide_ic),
-                null
-            )
-        }else {
-            binding.input.inputType = InputType.TYPE_CLASS_TEXT
+        Log.i("TypeOfInput",showPassword.toString())
+
+//        if (showPassword){
+//            binding.input.inputType = InputType.TYPE_CLASS_TEXT
+//            binding.input.setCompoundDrawablesRelative(
+//                null,
+//                null,
+//                AppCompatResources.getDrawable(context,R.drawable.password_eye_hide_ic),
+//                null
+//            )
+//        }else {
+        binding.input.inputType = InputType.TYPE_CLASS_TEXT and  InputType.TYPE_TEXT_VARIATION_PASSWORD
             binding.input.setCompoundDrawablesRelative(
                 null,
                 null,
                 AppCompatResources.getDrawable(context,R.drawable.password_eye_unhide_ic),
                 null
             )
-        }
+//        }
+        invalidate()
+        requestLayout()
     }
 
 

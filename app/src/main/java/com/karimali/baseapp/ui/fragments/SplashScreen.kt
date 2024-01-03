@@ -20,6 +20,10 @@ class SplashScreen : BaseFragment<FragmentSplashScreenBinding>
 
         lifecycleScope.launchWhenResumed {
             delay(3000)
+
+            navController!!.navigate(
+                R.id.action_splashScreen_to_auth_navigation
+            )
         }
 
     }

@@ -23,13 +23,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:animateLayoutChanges="true"
+        android:paddingHorizontal="@dimen/default_horizontal_padding"
         >
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/edit_text_app_height_50dp"
             app:cardBackgroundColor="@color/edit_text_background"
             app:strokeWidth="1dp"
-            android:id="@+id/input_card">
+            android:id="@+id/input_card"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:cardElevation="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,11 +55,13 @@
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:background="@null"
                     android:hint="@{hintText}"
                     style="@style/app_edit_text_style"
                     android:id="@+id/input"
+                    android:inputType="textPassword"
+
                     />
 
             </LinearLayout>

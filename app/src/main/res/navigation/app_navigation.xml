@@ -6,14 +6,27 @@
     app:startDestination="@+id/splashScreen">
 
 
+    <include app:graph="@navigation/auth_navigation" />
+
+
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.karimali.baseapp.ui.fragments.SplashScreen"
+        android:label=""
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreen_to_auth_navigation"
+            app:destination="@id/auth_navigation" />
+        <action
+            android:id="@+id/action_splashScreen_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+
+
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.karimali.baseapp.ui.fragments.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
-    <fragment
-        android:id="@+id/splashScreen"
-        android:name="com.karimali.baseapp.ui.fragments.auth.LoginScreen"
-        android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen" />
+
 </navigation>

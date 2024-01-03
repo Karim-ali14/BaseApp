@@ -123,8 +123,9 @@ object Constants {
     val destinationWithNoBackButton = arrayListOf(
         R.id.navigation_home
     )
-    val destinationWithToolBar = arrayListOf(
-        R.id.navigation_home
+    val destinationWithNoToolBar = arrayListOf(
+        R.id.splashScreen,
+        R.id.welcomeScreen,
     )
     val destinationShowSkipText = arrayListOf(
         R.id.loginScreen
