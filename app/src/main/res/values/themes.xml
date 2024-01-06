@@ -38,6 +38,12 @@
         <item name="android:fontFamily">@font/inter_semi_bold</item>
     </style>
 
+    <style name="textStyleWithInterSemiBold16sp">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
+    </style>
+
     <style name="textStyleWithInterBlack30sp">
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">?attr/colorOnPrimary</item>
@@ -104,5 +110,14 @@
         <item name="android:textSize">14sp</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:textColorHint">@color/gray_color</item>
+    </style>
+
+    <style name="textVerificationCodeStyle"  parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">31sp</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textColor">@color/nero_color</item>
+        <item name="hintTextColor">@color/gray_color</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
     </style>
 </resources>

@@ -19,4 +19,8 @@
     <string name="password">Password</string>
     <string name="forget_password">Forget password!</string>
     <string name="you_don_t_have_account">You don\'t have account?</string>
+    <string name="otp_verification">OTP Verification</string>
+    <string name="verify_now">Verify now</string>
+    <string name="didn_t_you_receive_any_code">Didn\'t you receive any code!</string>
+    <string name="re_send_code">Re-send code</string>
 </resources>
