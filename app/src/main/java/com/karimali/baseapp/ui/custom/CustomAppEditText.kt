@@ -1,5 +1,6 @@
 package com.karimali.baseapp.ui.custom
 
+import android.R.attr.password
 import android.content.Context
 import android.text.InputType
 import android.util.AttributeSet
@@ -11,6 +12,7 @@ import androidx.core.content.ContextCompat
 import com.karimali.baseapp.R
 import com.karimali.baseapp.common.utils.Enums
 import com.karimali.baseapp.databinding.CustomAppEditTextBinding
+
 
 class CustomAppEditText @JvmOverloads constructor(
     context: Context,
@@ -76,8 +78,22 @@ class CustomAppEditText @JvmOverloads constructor(
 
         }
 
+        eventsClick()
+
         invalidate()
         requestLayout()
+    }
+
+    private fun eventsClick() {
+        binding.apply {
+            handlePasswordEventClick()
+        }
+    }
+
+    private fun handlePasswordEventClick() {
+        binding.endIconLy.setOnClickListener {
+            showPassword = !showPassword
+        }
     }
 
     private fun handleErrorMessage() {
@@ -113,25 +129,15 @@ class CustomAppEditText @JvmOverloads constructor(
     }
 
     private fun handlePasswordStatus() {
-        Log.i("TypeOfInput",showPassword.toString())
 
-//        if (showPassword){
-//            binding.input.inputType = InputType.TYPE_CLASS_TEXT
-//            binding.input.setCompoundDrawablesRelative(
-//                null,
-//                null,
-//                AppCompatResources.getDrawable(context,R.drawable.password_eye_hide_ic),
-//                null
-//            )
-//        }else {
-        binding.input.inputType = InputType.TYPE_CLASS_TEXT and  InputType.TYPE_TEXT_VARIATION_PASSWORD
-            binding.input.setCompoundDrawablesRelative(
-                null,
-                null,
-                AppCompatResources.getDrawable(context,R.drawable.password_eye_unhide_ic),
-                null
-            )
-//        }
+        if (showPassword){
+            binding.input.inputType = InputType.TYPE_CLASS_TEXT
+            binding.endIcon.setImageResource(R.drawable.password_eye_hide_ic)
+
+        }else {
+            binding.input.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            binding.endIcon.setImageResource(R.drawable.password_eye_unhide_ic)
+        }
         invalidate()
         requestLayout()
     }

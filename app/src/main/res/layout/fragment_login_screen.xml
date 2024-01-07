@@ -61,7 +61,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:placeholderText="@string/password"
-                    app:type="Password" />
+                    app:type="Password"
+                    />
 
                 <Space
                     android:layout_width="match_parent"
