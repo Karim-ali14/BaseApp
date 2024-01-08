@@ -2,10 +2,10 @@ package com.karimali.baseapp.common.utils
 
 object Enums {
 
-    enum class EditTextInputType{
-        Phone,
-        Password,
-        Text,
-        Email
+    enum class EditTextInputType(val value: String){
+        Phone("phone"),
+        Password("password"),
+        Text("text"),
+        Email("email")
     }
 }

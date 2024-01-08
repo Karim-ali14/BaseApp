@@ -13,5 +13,20 @@ class SignUpScreen : BaseFragment<FragmentSignUpScreenBinding>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        eventClicks()
+    }
+
+    private fun eventClicks() {
+        binding!!.apply {
+            signUpBtu.setOnClickListener {
+                navigateToVerifyPhone()
+            }
+        }
+    }
+
+    private fun navigateToVerifyPhone() {
+        navController!!.navigate(
+            R.id.action_signUpScreen_to_verificationScreen
+        )
     }
 }

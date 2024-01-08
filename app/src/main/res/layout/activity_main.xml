@@ -25,8 +25,7 @@
                 android:layout_height="match_parent"
                 android:layoutDirection="locale"
                 app:defaultNavHost="true"
-                app:navGraph="@navigation/app_navigation"
-                android:layout_marginBottom="@dimen/bottom_app_size" />
+                app:navGraph="@navigation/app_navigation" />
 
         </LinearLayout>
 
@@ -99,7 +98,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:visibility="gone">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_nav"

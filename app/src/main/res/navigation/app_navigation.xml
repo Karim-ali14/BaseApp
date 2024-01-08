@@ -16,10 +16,16 @@
         tools:layout="@layout/fragment_splash_screen" >
         <action
             android:id="@+id/action_splashScreen_to_auth_navigation"
-            app:destination="@id/auth_navigation" />
+            app:destination="@id/auth_navigation"
+            app:popUpTo="@navigation/auth_navigation"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true" />
         <action
             android:id="@+id/action_splashScreen_to_navigation_home"
-            app:destination="@id/navigation_home" />
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true" />
     </fragment>
 
 

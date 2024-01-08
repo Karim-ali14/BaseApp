@@ -12,7 +12,20 @@ class VerificationScreen : BaseFragment<FragmentVerificationScreenBinding>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        eventClicks()
     }
 
+    private fun eventClicks() {
+        binding!!.apply {
+            sendSummary.setOnClickListener {
+                navigateToCompleteProfile()
+            }
+        }
+    }
+
+    private fun navigateToCompleteProfile() {
+        navController!!.navigate(
+            R.id.action_verificationScreen_to_completeProfileScreen
+        )
+    }
 }

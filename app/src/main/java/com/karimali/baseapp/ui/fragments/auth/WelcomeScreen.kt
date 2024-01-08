@@ -22,6 +22,11 @@ class WelcomeScreen : BaseFragment<FragmentWelcomeScreenBinding>
                     R.id.action_welcomeScreen_to_loginScreen
                 )
             }
+            signUpBtu.setOnClickListener {
+                navController!!.navigate(
+                    R.id.action_welcomeScreen_to_signUpScreen
+                )
+            }
         }
     }
 }

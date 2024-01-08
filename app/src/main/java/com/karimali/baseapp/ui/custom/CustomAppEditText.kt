@@ -1,6 +1,5 @@
 package com.karimali.baseapp.ui.custom
 
-import android.R.attr.password
 import android.content.Context
 import android.text.InputType
 import android.util.AttributeSet
@@ -66,6 +65,7 @@ class CustomAppEditText @JvmOverloads constructor(
                 getString(R.styleable.CustomAppEditText_placeholderText)?.let { placeHolder ->
                     binding.placeHolder = placeHolder
                 }
+
                 getString(R.styleable.CustomAppEditText_hint)?.let { hint ->
                     binding.hintText = hint
                 }

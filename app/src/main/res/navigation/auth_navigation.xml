@@ -12,10 +12,18 @@
         tools:layout="@layout/fragment_welcome_screen" >
         <action
             android:id="@+id/action_welcomeScreen_to_loginScreen"
-            app:destination="@id/loginScreen" />
+            app:destination="@id/loginScreen"
+            app:enterAnim="@anim/enter_anim2"
+            app:exitAnim="@anim/exit_anim2"
+            app:popEnterAnim="@anim/pop_enter_anim2"
+            app:popExitAnim="@anim/pop_exit_anim2"/>
         <action
             android:id="@+id/action_welcomeScreen_to_signUpScreen"
-            app:destination="@id/signUpScreen" />
+            app:destination="@id/signUpScreen"
+            app:enterAnim="@anim/enter_anim2"
+            app:exitAnim="@anim/exit_anim2"
+            app:popEnterAnim="@anim/pop_enter_anim2"
+            app:popExitAnim="@anim/pop_exit_anim2"/>
     </fragment>
 
     <fragment
@@ -28,5 +36,33 @@
         android:id="@+id/signUpScreen"
         android:name="com.karimali.baseapp.ui.fragments.auth.SignUpScreen"
         android:label=""
-        tools:layout="@layout/fragment_sign_up_screen"/>
+        tools:layout="@layout/fragment_sign_up_screen">
+        <action
+            android:id="@+id/action_signUpScreen_to_verificationScreen"
+            app:destination="@id/verificationScreen"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/verificationScreen"
+        android:name="com.karimali.baseapp.ui.fragments.auth.VerificationScreen"
+        android:label=""
+        tools:layout="@layout/fragment_verification_screen">
+        <action
+            android:id="@+id/action_verificationScreen_to_completeProfileScreen"
+            app:destination="@id/completeProfileScreen"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/completeProfileScreen"
+        android:name="com.karimali.baseapp.ui.fragments.auth.CompleteProfileScreen"
+        android:label=""
+        tools:layout="@layout/fragment_complete_profile_screen"/>
 </navigation>
