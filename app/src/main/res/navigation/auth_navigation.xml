@@ -30,7 +30,11 @@
         android:id="@+id/loginScreen"
         android:name="com.karimali.baseapp.ui.fragments.auth.LoginScreen"
         android:label=""
-        tools:layout="@layout/fragment_login_screen"/>
+        tools:layout="@layout/fragment_login_screen">
+        <action
+            android:id="@+id/action_loginScreen_to_signUpScreen"
+            app:destination="@id/signUpScreen" />
+    </fragment>
 
     <fragment
         android:id="@+id/signUpScreen"
@@ -44,6 +48,10 @@
             app:exitAnim="@anim/exit_anim"
             app:popEnterAnim="@anim/pop_enter_anim"
             app:popExitAnim="@anim/pop_exit_anim" />
+        <argument
+            android:name="type"
+            app:argType="com.karimali.baseapp.common.utils.Enums$NavigationTypes"
+            android:defaultValue="SignUp" />
     </fragment>
 
     <fragment
@@ -58,6 +66,15 @@
             app:exitAnim="@anim/exit_anim"
             app:popEnterAnim="@anim/pop_enter_anim"
             app:popExitAnim="@anim/pop_exit_anim"/>
+        <argument
+            android:name="type"
+            app:argType="com.karimali.baseapp.common.utils.Enums$NavigationTypes" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_verificationScreen_to_newPasswordScreen"
+            app:destination="@id/newPasswordScreen" />
     </fragment>
 
     <fragment
@@ -65,4 +82,12 @@
         android:name="com.karimali.baseapp.ui.fragments.auth.CompleteProfileScreen"
         android:label=""
         tools:layout="@layout/fragment_complete_profile_screen"/>
+    <fragment
+        android:id="@+id/newPasswordScreen"
+        android:name="com.karimali.baseapp.ui.fragments.auth.NewPasswordScreen"
+        tools:layout="@layout/fragment_new_password_screen">
+        <argument
+            android:name="phone"
+            app:argType="string" />
+    </fragment>
 </navigation>

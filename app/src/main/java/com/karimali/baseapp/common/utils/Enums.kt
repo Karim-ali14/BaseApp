@@ -8,4 +8,12 @@ object Enums {
         Text("text"),
         Email("email")
     }
+
+
+    enum class NavigationTypes {
+        SignUp,
+        ResetPassword
+    }
+
+
 }

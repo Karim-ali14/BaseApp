@@ -64,24 +64,24 @@
                     app:type="Password"
                     />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_10sdp" />
+
 
                 <TextView
+                    android:id="@+id/forget_password_btu"
                     style="@style/textStyleWithHintColorInterMedium13sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="@dimen/default_horizontal_padding"
                     android:text="@string/forget_password"
-                    bind:setLineUnderText="@{true}" />
+                    bind:setLineUnderText="@{true}"
+                    android:paddingVertical="@dimen/_10sdp"/>
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_25sdp" />
+                    android:layout_height="@dimen/_15sdp" />
 
                 <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
-                    android:id="@+id/sign_up_btu"
+                    android:id="@+id/sign_in_btu"
                     style="@style/app_normal_button_style"
                     android:layout_marginHorizontal="@dimen/default_horizontal_padding"
                     android:layout_marginBottom="@dimen/_10sdp"
@@ -119,6 +119,7 @@
                         android:layout_height="match_parent" />
 
                     <TextView
+                        android:id="@+id/sign_up_btu"
                         style="@style/textStyleWithInterBold16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

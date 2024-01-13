@@ -27,9 +27,16 @@ fun EditText.closeKeyboard(activity: Activity){
         InputMethodManager.HIDE_NOT_ALWAYS
     )
 }
+
 fun TextInputLayout.getValue() = this.editText?.text?.toString() ?: ""
+fun EditText.getValue() = this.text?.toString() ?: ""
+
 fun TextInputLayout.setValue(value:String) {
     this.editText?.setText(value)
+    Log.i("bindProviderDate","$value")
+}
+fun EditText.setValue(value:String) {
+    this.setText(value)
     Log.i("bindProviderDate","$value")
 }
 

@@ -19,7 +19,7 @@ class CustomAppEditText @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
-    var binding:CustomAppEditTextBinding
+    private var binding:CustomAppEditTextBinding
 
     private var inputType : String = ""
         set(value) {
@@ -38,7 +38,7 @@ class CustomAppEditText @JvmOverloads constructor(
             requestLayout()
         }
 
-    private var errorMessage:String? = null
+    var errorMessage:String? = null
         set(value){
             field = value
             handleErrorMessage()
@@ -142,5 +142,8 @@ class CustomAppEditText @JvmOverloads constructor(
         requestLayout()
     }
 
+    fun getEditText() = binding.input
+
+    fun getMaterialCardView() = binding.inputCard
 
 }
