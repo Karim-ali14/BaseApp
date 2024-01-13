@@ -26,6 +26,7 @@ import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.*
 import androidx.viewpager2.widget.ViewPager2
 import com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
@@ -359,7 +360,7 @@ fun MaterialToolbar.setUpWithNavigation(activity:MainActivity,
                                         configuration : AppBarConfiguration ?= null ,
                                         navController: NavController){
     activity.setSupportActionBar(this)
-    activity.setupActionBarWithNavController(navController,configuration!!)
+    setupWithNavController(navController,configuration!!)
     navController.addOnDestinationChangedListener { controller, destination, arguments ->
         Log.i("destination",destination.id.toString())
 

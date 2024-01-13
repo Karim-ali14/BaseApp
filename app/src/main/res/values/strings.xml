@@ -24,4 +24,6 @@
     <string name="didn_t_you_receive_any_code">Didn\'t you receive any code!</string>
     <string name="re_send_code">Re-send code</string>
     <string name="complete_profile">Complete profile</string>
+    <string name="new_password">New password</string>
+    <string name="done">Done</string>
 </resources>
