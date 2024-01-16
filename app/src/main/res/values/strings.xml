@@ -30,4 +30,9 @@
     <string name="new_password">New password</string>
     <string name="done">Done</string>
     <string name="send">Send</string>
+    <string name="name_here">name here</string>
+    <string name="last_name_here">last name here</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="last_name">Last name</string>
+    <string name="first_name">First name</string>
 </resources>

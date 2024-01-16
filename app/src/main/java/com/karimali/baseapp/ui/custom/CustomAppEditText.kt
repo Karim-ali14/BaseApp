@@ -46,6 +46,16 @@ class CustomAppEditText @JvmOverloads constructor(
             requestLayout()
         }
 
+    var enableEditField = true
+        set(value) {
+            field = value
+            handleEnableEditField()
+        }
+
+    private fun handleEnableEditField() {
+        binding.input.isEnabled = enableEditField
+    }
+
     init {
         binding = CustomAppEditTextBinding.inflate(
             LayoutInflater.from(context),
@@ -68,6 +78,10 @@ class CustomAppEditText @JvmOverloads constructor(
 
                 getString(R.styleable.CustomAppEditText_hint)?.let { hint ->
                     binding.hintText = hint
+                }
+
+                getBoolean(R.styleable.CustomAppEditText_isEnable,true).let { enable ->
+                    enableEditField = enable
                 }
 
             }catch (e:Exception){

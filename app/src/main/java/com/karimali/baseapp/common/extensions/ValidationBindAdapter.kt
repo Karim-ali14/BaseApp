@@ -1,6 +1,9 @@
 package com.karimali.baseapp.common.extensions
 
 import android.util.Patterns
+import android.widget.EditText
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import com.karimali.baseapp.R
 import com.karimali.baseapp.ui.custom.CustomAppEditText
@@ -70,4 +73,30 @@ fun CustomAppEditText.confirmPasswordValidation(passwordTextLayout : CustomAppEd
         }
     }
     return isValid
+}
+
+fun EditText.isCodeVerificationFieldNotEmpty():Boolean{
+    var isValidate = true
+    if (this.text.toString().isEmpty()) {
+        isValidate = false
+        background =
+            AppCompatResources.getDrawable(context, R.drawable.verification_error_edit_text_shape)
+    }else{
+        isValidate = true
+        background =
+            AppCompatResources.getDrawable(context, R.drawable.verification_edit_text_shape)
+    }
+    this.doAfterTextChanged {
+        if (this.text.toString().isEmpty()) {
+            isValidate = false
+            background =
+                AppCompatResources.getDrawable(context, R.drawable.verification_error_edit_text_shape)
+        }else{
+            isValidate = true
+            background =
+                AppCompatResources.getDrawable(context, R.drawable.verification_edit_text_shape)
+        }
+    }
+
+    return isValidate
 }
