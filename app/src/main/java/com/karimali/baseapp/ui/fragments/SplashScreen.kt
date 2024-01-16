@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavOptions
 import com.karimali.baseapp.R
 import com.karimali.baseapp.databinding.FragmentSplashScreenBinding
 import com.karimali.baseapp.ui.base.BaseFragment
@@ -22,7 +23,7 @@ class SplashScreen : BaseFragment<FragmentSplashScreenBinding>
             delay(3000)
 
             navController!!.navigate(
-                R.id.action_splashScreen_to_auth_navigation
+                SplashScreenDirections.actionSplashScreenToAuthNavigation()
             )
         }
 

@@ -6,6 +6,7 @@ import com.ihsanbal.logging.LoggingInterceptor
 import com.karimali.baseapp.common.utils.Constants.Keys.USER_KEY
 import com.karimali.baseapp.common.utils.Constants.Route.BASE_URL
 import com.karimali.baseapp.date.apis.Services
+import com.karimali.baseapp.date.models.ClientModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +27,7 @@ import java.util.*
 object RetrofitModule {
     @Provides
     fun provideOkHttpClient(prefs: AppSharedPrefs): OkHttpClient? {
-        val clientModel = prefs.getSavedData<String>(USER_KEY)
+        val clientModel = prefs.getSavedData<ClientModel>(USER_KEY)
         val loggingInterceptor = LoggingInterceptor.Builder()
             .setLevel(Level.BASIC)
             .log(Platform.WARN)
@@ -43,8 +44,8 @@ object RetrofitModule {
                 newRequest.addHeader("Accept","application/json")
                 Log.d("UserAuth", "${clientModel}")
                 clientModel?.let {
-//                    Log.d("UserAuth", "${it.token} ")
-//                    newRequest.addHeader("Authorization", "Bearer ${it.token}")
+                    Log.d("UserAuth", "${it.token} ")
+                    newRequest.addHeader("Authorization", "Bearer ${it.token}")
                 }
                 return chain.proceed(newRequest.build())
             }
