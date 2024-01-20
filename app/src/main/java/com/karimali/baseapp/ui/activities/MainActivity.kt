@@ -1,15 +1,22 @@
 package com.karimali.baseapp.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import com.karimali.baseapp.R
+import com.karimali.baseapp.common.extensions.PickSelectionCallback
 import com.karimali.baseapp.common.extensions.handleToolBarProcess
 import com.karimali.baseapp.common.extensions.setUpBottomNavWithNavController
 import com.karimali.baseapp.common.extensions.setUpWithNavigation
 import com.karimali.baseapp.common.utils.Constants
+import com.karimali.baseapp.common.utils.Constants.FilePickerConst.REQUEST_CODE_CAVER_PHOTO
+import com.karimali.baseapp.common.utils.Constants.FilePickerConst.REQUEST_CODE_DOC
+import com.karimali.baseapp.common.utils.Constants.FilePickerConst.REQUEST_CODE_PHOTO
+import com.karimali.baseapp.common.utils.Constants.FilePickerConst.REQUEST_CODE_PROFILE_PHOTO
 import com.karimali.baseapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +24,9 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
+    var onPickImageResult : PickSelectionCallback? = null
+    var onPickProfileImagesResult : PickSelectionCallback? = null
+    var onPickFileResult : PickSelectionCallback? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,4 +61,18 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        try {
+            Log.i("requestCode",requestCode.toString())
+            when(requestCode){
+                REQUEST_CODE_PHOTO -> { onPickImageResult?.invoke(requestCode,resultCode,data) }
+                REQUEST_CODE_PROFILE_PHOTO, REQUEST_CODE_CAVER_PHOTO -> { onPickProfileImagesResult?.invoke(requestCode,resultCode,data) }
+                REQUEST_CODE_DOC -> { onPickFileResult?.invoke(requestCode,resultCode,data) }
+                else -> {}
+            }
+        }catch (e:Exception){
+            Log.i("File","Not Error")
+        }
+    }
 }

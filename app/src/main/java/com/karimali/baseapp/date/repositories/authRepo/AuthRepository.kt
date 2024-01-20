@@ -2,6 +2,8 @@ package com.karimali.baseapp.date.repositories.authRepo
 
 import com.karimali.baseapp.date.models.ClientModel
 import com.karimali.baseapp.date.models.ResponseModel
+import okhttp3.RequestBody
+import java.io.File
 
 interface AuthRepository {
 
@@ -11,12 +13,8 @@ interface AuthRepository {
     ): ResponseModel<ClientModel>
 
     suspend fun registration(
-        phone:String ,
-        firstName:String ,
-        lastName:String ,
-        password:String ,
-        confirmPassword:String ,
-        code:String ,
+        body:  HashMap<String, RequestBody>,
+        image: File
     ):ResponseModel<ClientModel>
 
 

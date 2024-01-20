@@ -19,8 +19,8 @@ import com.karimali.baseapp.common.utils.SpaceItemDecoration
 // ImageViews Adapters.
 /////////////////////////////////////////////////////////////////////////
 
-@BindingAdapter(value = ["glideImageUrl"])
-fun ImageView.glideImageUrl(url: String?) {
+@BindingAdapter(value = ["loadingImageUrl"])
+fun ImageView.loadingImageUrl(url: String?) {
     this.run {
 
         if (!url.isNullOrEmpty()) {

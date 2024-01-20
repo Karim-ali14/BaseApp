@@ -1,8 +1,11 @@
 package com.karimali.baseapp.date.repositories.authRepo
 
+import com.karimali.baseapp.common.extensions.toImagePart
 import com.karimali.baseapp.date.apis.Services
 import com.karimali.baseapp.date.models.ClientModel
 import com.karimali.baseapp.date.models.ResponseModel
+import okhttp3.RequestBody
+import java.io.File
 import javax.inject.Inject
 
 class AuthRepositoryImp @Inject constructor(private val services: Services?) :AuthRepository {
@@ -10,22 +13,10 @@ class AuthRepositoryImp @Inject constructor(private val services: Services?) :Au
     = services!!.login(phone, password)
 
     override suspend fun registration(
-        phone: String,
-        firstName: String,
-        lastName: String,
-        password: String,
-        confirmPassword: String,
-        code: String
-    ): ResponseModel<ClientModel> {
-        return services!!.registration(
-            phone = phone,
-            firstName = firstName,
-            lastName = lastName,
-            password = password,
-            confirmPassword = confirmPassword,
-            code = code
-        )
-    }
+        body: HashMap<String, RequestBody>,
+        image: File
+    ): ResponseModel<ClientModel> = services!!.registration(body,image.toImagePart("image"))
+
 
     override suspend fun sendCode(phone: String): ResponseModel<Any> = services!!.sendCode(phone)
 

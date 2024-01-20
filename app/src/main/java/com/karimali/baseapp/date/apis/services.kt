@@ -4,10 +4,15 @@ package com.karimali.baseapp.date.apis
 import com.karimali.baseapp.common.utils.Route
 import com.karimali.baseapp.date.models.ClientModel
 import com.karimali.baseapp.date.models.ResponseModel
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
+import retrofit2.http.PartMap
 
 interface Services {
 
@@ -19,15 +24,11 @@ interface Services {
         @Field("password") password:String ,
     ):ResponseModel<ClientModel>
 
-    @FormUrlEncoded
+    @Multipart
     @POST(Route.REGISTRATION)
     suspend fun registration(
-        @Field("phone") phone:String ,
-        @Field("first_name") firstName:String ,
-        @Field("last_name") lastName:String ,
-        @Field("password") password:String ,
-        @Field("confirm_password") confirmPassword:String ,
-        @Field("code") code:String ,
+        @PartMap body: HashMap<String, RequestBody>,
+        @Part image: MultipartBody.Part
     ):ResponseModel<ClientModel>
 
     @FormUrlEncoded

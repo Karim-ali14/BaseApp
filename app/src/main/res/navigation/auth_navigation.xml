@@ -81,7 +81,14 @@
         android:id="@+id/completeProfileScreen"
         android:name="com.karimali.baseapp.ui.fragments.auth.CompleteProfileScreen"
         android:label=""
-        tools:layout="@layout/fragment_complete_profile_screen"/>
+        tools:layout="@layout/fragment_complete_profile_screen">
+        <argument
+            android:name="phone"
+            app:argType="string" />
+        <argument
+            android:name="code"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/newPasswordScreen"
         android:name="com.karimali.baseapp.ui.fragments.auth.NewPasswordScreen"

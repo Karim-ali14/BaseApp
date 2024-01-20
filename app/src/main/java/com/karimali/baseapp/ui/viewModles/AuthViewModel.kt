@@ -6,6 +6,8 @@ import com.karimali.baseapp.common.models.ResultState
 import com.karimali.baseapp.date.models.ClientModel
 import com.karimali.baseapp.date.repositories.authRepo.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import okhttp3.RequestBody
+import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
@@ -39,24 +41,14 @@ class AuthViewModel @Inject constructor(
     }
 
     fun registration(
-        phone:String,
-        firstName:String,
-        lastName:String,
-        password:String,
-        confirmPassword:String,
-        code:String,
+        body:  HashMap<String, RequestBody>,
+        image: File
     ) : LiveData<ResultState<ClientModel>> {
         val loginDateFlow: MutableLiveData<ResultState<ClientModel>> = MutableLiveData()
 
         performNetworkOp(
             startCall = { loginDateFlow.postValue(ResultState.Loading) },
-            networkCall = { authRepository.registration(
-                phone = phone ,
-                firstName = firstName,
-                lastName = lastName,
-                password = password,
-                confirmPassword = confirmPassword,
-                code = code) },
+            networkCall = { authRepository.registration(body, image) },
             doOnMainThread = { response ->
                 val result =
                     if (response.status)

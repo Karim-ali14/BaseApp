@@ -1,12 +1,17 @@
 package com.karimali.baseapp.common.extensions
 
+import android.text.TextUtils
 import android.util.Patterns
 import android.widget.EditText
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.view.get
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
+import com.google.android.material.textfield.TextInputLayout
 import com.karimali.baseapp.R
 import com.karimali.baseapp.ui.custom.CustomAppEditText
+import de.hdodenhof.circleimageview.CircleImageView
+import java.util.regex.Pattern
 
 fun CustomAppEditText.isValidatePhone() : Boolean {
     var isValidate = true
@@ -49,6 +54,56 @@ fun CustomAppEditText.isEmptyFieldValidation() : Boolean {
     }
 
     return isValid
+}
+
+fun CustomAppEditText.nameValidation(errorMsg : String = "Required") : Boolean {
+
+    getEditText().doOnTextChanged { text, _ , _ , _ ->
+        if(text!!.isNotEmpty()){
+            errorMessage = null
+        }
+    }
+
+    if (TextUtils.isEmpty(getEditText().text.toString())) {
+        errorMessage = context.getString(R.string.required)
+        this.requestFocus()
+        return false
+    }else if (
+        getEditText().text.toString().trim{ it <= ' ' }.contains("[0-9]".toRegex())
+        ||
+        getEditText()?.text.toString().trim{ it <= ' ' }.contains("(?=.*[@#\$%^&+=])".toRegex())
+
+    ) {
+        errorMessage = context.getString(R.string.name_validate_error)
+        this.requestFocus()
+        return false
+    } else
+        errorMessage = null
+
+    return true
+}
+
+fun CustomAppEditText.isValidPassword(): Boolean {
+    val regex = "^(?=.*[a-zA-Z]).{8,}\$"
+
+    getEditText().doOnTextChanged { text, _ , _ , _ ->
+        if(text!!.isNotEmpty()){
+            errorMessage = null
+        }
+    }
+
+    if (TextUtils.isEmpty(getEditText().text.toString())) {
+        errorMessage = context.getString(R.string.required)
+        this.requestFocus()
+        return false
+    }else if (!Pattern.compile(regex).matcher(getEditText().text.toString().trim{ it <= ' ' }).matches()) {
+        errorMessage = context.getString(R.string.password_is_not_valid)
+        this.requestFocus()
+        return false
+    } else
+        errorMessage = null
+
+    return true
 }
 
 fun CustomAppEditText.confirmPasswordValidation(passwordTextLayout : CustomAppEditText) : Boolean {
@@ -99,4 +154,20 @@ fun EditText.isCodeVerificationFieldNotEmpty():Boolean{
     }
 
     return isValidate
+}
+
+fun String?.isEmptyIconValidation(icon: CircleImageView) : Boolean {
+    val iconPath:String? = this
+    var isValid : Boolean = true
+
+    if(iconPath == null || iconPath.isEmpty()) {
+        icon.borderColor = icon.context.resources.getColor(R.color.red)
+        icon.borderWidth = 2
+        isValid = false
+    }else {
+        icon.borderWidth = 0
+        isValid = true
+    }
+
+    return isValid
 }
