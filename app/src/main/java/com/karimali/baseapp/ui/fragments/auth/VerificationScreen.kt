@@ -122,13 +122,10 @@ class VerificationScreen : BaseFragment<FragmentVerificationScreenBinding>
                         {
                             try {
                                 binding!!.codeBoxesLayout[index + 2].requestFocus()
-                            }catch (e:Exception){
+                            }catch (e:Exception){ }
 
-                            }
-
-//                            binding!!.codeBoxesLayout[index].backgroundTintList = getColorList(R.color.app_second_color)
                         }else{
-//                            binding!!.codeBoxesLayout[index].backgroundTintList = getColorList(R.color.white)
+
                         }
 
                     }

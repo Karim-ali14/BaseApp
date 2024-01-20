@@ -38,8 +38,10 @@ class NewPasswordScreen : BaseFragment<FragmentNewPasswordScreenBinding>
 
     private fun eventClicks() {
         binding!!.apply {
-            if (isDateValidate())
-                changePassword()
+            doneBtu.setOnClickListener {
+                if (isDateValidate())
+                    changePassword()
+            }
         }
     }
 
@@ -52,7 +54,7 @@ class NewPasswordScreen : BaseFragment<FragmentNewPasswordScreenBinding>
         ).observe(viewLifecycleOwner){
             stateHandler(
                 result = it,
-                loadingButton = binding!!.signUpBtu,
+                loadingButton = binding!!.doneBtu,
                 showToasts = true,
                 onSuccess = {
                     navigateToLogin()

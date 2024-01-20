@@ -88,7 +88,7 @@ class LoginScreen : BaseFragment<FragmentLoginScreenBinding>
 
     private fun navigateToHome() {
         navController!!.navigate(
-            LoginScreenDirections.actionLoginScreenToSignUpScreen()
+            LoginScreenDirections.actionLoginScreenToHomeNavigation()
         )
     }
 

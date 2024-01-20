@@ -87,7 +87,9 @@ class CompleteProfileScreen : BaseFragment<FragmentCompleteProfileScreenBinding>
     }
 
     private fun navigateToHomeScreen() {
-
+        navController!!.navigate(
+            CompleteProfileScreenDirections.actionCompleteProfileScreenToHomeNavigation()
+        )
     }
 
     private fun getFields(): HashMap<String, RequestBody> = hashMapOf(
