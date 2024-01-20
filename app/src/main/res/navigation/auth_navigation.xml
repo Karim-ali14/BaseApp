@@ -96,5 +96,11 @@
         <argument
             android:name="phone"
             app:argType="string" />
+        <argument
+            android:name="code"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_newPasswordScreen_to_loginScreen"
+            app:destination="@id/loginScreen" />
     </fragment>
 </navigation>

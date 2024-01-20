@@ -18,9 +18,10 @@ import com.karimali.baseapp.common.utils.Constants.FilePickerConst.REQUEST_CODE_
 import com.karimali.baseapp.common.utils.Constants.FilePickerConst.REQUEST_CODE_PHOTO
 import com.karimali.baseapp.common.utils.Constants.FilePickerConst.REQUEST_CODE_PROFILE_PHOTO
 import com.karimali.baseapp.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
 
     lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration

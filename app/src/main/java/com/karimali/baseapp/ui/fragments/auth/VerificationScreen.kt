@@ -10,6 +10,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.forEachIndexed
 import androidx.core.view.get
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.karimali.baseapp.R
 import com.karimali.baseapp.common.extensions.isCodeVerificationFieldNotEmpty
@@ -17,11 +18,14 @@ import com.karimali.baseapp.common.utils.Enums
 import com.karimali.baseapp.common.utils.Enums.NavigationTypes.SignUp
 import com.karimali.baseapp.databinding.FragmentVerificationScreenBinding
 import com.karimali.baseapp.ui.base.BaseFragment
+import com.karimali.baseapp.ui.viewModles.AuthViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class VerificationScreen : BaseFragment<FragmentVerificationScreenBinding>
     (FragmentVerificationScreenBinding::inflate,R.layout.fragment_verification_screen) {
     private val args:VerificationScreenArgs by navArgs()
+    private val authViewModel: AuthViewModel by viewModels()
 
     private var phone = ""
     lateinit var tBox1 : EditText
@@ -45,26 +49,45 @@ class VerificationScreen : BaseFragment<FragmentVerificationScreenBinding>
         binding!!.apply {
             sendSummary.setOnClickListener {
                 if (validateInputs()){
-                    if (args.type == Enums.NavigationTypes.SignUp){
-                        navigateToCompleteProfile()
-                    }else if (args.type == Enums.NavigationTypes.ResetPassword){
-                        navigateToResetPassword()
-                    }
+                    verifyPhone()
                 }
 
             }
         }
     }
 
+    private fun verifyPhone() {
+        authViewModel.confirmCode(
+            phone,collectCode()
+        ).observe(viewLifecycleOwner){
+            stateHandler(
+                result = it,
+                loadingButton = binding!!.sendSummary,
+                showToasts = true,
+                onSuccess = {
+                    if (args.type == Enums.NavigationTypes.SignUp){
+                        navigateToCompleteProfile()
+                    }else if (args.type == Enums.NavigationTypes.ResetPassword){
+                        navigateToResetPassword()
+                    }
+                }
+            )
+        }
+    }
+
     private fun navigateToResetPassword() {
         navController!!.navigate(
-            R.id.action_verificationScreen_to_completeProfileScreen
+            VerificationScreenDirections.actionVerificationScreenToNewPasswordScreen(
+                phone,collectCode()
+            )
         )
     }
 
     private fun navigateToCompleteProfile() {
         navController!!.navigate(
-            R.id.action_verificationScreen_to_completeProfileScreen
+            VerificationScreenDirections.actionVerificationScreenToCompleteProfileScreen(
+                phone,collectCode()
+            )
         )
     }
 

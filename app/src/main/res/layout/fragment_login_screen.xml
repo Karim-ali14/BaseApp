@@ -64,8 +64,6 @@
                     app:type="Password"
                     />
 
-
-
                 <TextView
                     android:id="@+id/forget_password_btu"
                     style="@style/textStyleWithHintColorInterMedium13sp"
@@ -91,6 +89,8 @@
                     app:layout_constraintBottom_toTopOf="@id/already_have_account_ly"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    android:layout_gravity="center_horizontal"
+                    app:spinning_bar_color="@color/white"
                     />
 
                 <Space

@@ -59,7 +59,9 @@
                     android:text="@string/send"
                     app:layout_constraintBottom_toTopOf="@id/already_have_account_ly"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_gravity="center_horizontal"
+                    app:spinning_bar_color="@color/white"/>
 
                 <Space
                     android:layout_width="match_parent"

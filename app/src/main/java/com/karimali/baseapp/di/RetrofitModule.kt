@@ -4,7 +4,7 @@ import android.util.Log
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
 import com.karimali.baseapp.common.utils.Constants.Keys.USER_KEY
-import com.karimali.baseapp.common.utils.Constants.Route.BASE_URL
+import com.karimali.baseapp.common.utils.Route.BASE_URL
 import com.karimali.baseapp.date.apis.Services
 import com.karimali.baseapp.date.models.ClientModel
 import dagger.Module
