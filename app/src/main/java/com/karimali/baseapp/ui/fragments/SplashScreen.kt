@@ -30,12 +30,12 @@ class SplashScreen : BaseFragment<FragmentSplashScreenBinding>
 
         lifecycleScope.launchWhenResumed {
             delay(3000)
-            if(user != null){
-                Log.d("USER","User $user")
-                navController!!.navigate(SplashScreenDirections.actionSplashScreenToHomeNavigation())
-            }else{
+//            if(user != null){
+//                Log.d("USER","User $user")
+//                navController!!.navigate(SplashScreenDirections.actionSplashScreenToHomeNavigation())
+//            }else{
                 navController!!.navigate(SplashScreenDirections.actionSplashScreenToAuthNavigation())
-            }
+//            }
         }
 
     }

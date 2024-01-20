@@ -87,6 +87,18 @@
         <item name="android:fontFamily">@font/inter_medium</item>
     </style>
 
+    <style name="TextStyleWithBlackInterMedium15sp">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="SeeAllTextStyleWithInterMedium15sp">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/see_all_color</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+
 
     <style name="app_normal_button_style">
         <item name="android:layout_width">match_parent</item>
