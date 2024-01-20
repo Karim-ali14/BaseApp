@@ -1,11 +1,7 @@
 package com.karimali.baseapp.date.apis
 
 
-import com.karimali.baseapp.common.utils.Constants.Route.CONFIRM_CODE
-import com.karimali.baseapp.common.utils.Constants.Route.LOGIN
-import com.karimali.baseapp.common.utils.Constants.Route.RESET_PASSWORD
-import com.karimali.baseapp.common.utils.Constants.Route.SEND_CODE
-import com.karimali.baseapp.common.utils.Constants.Route.SEND_CODE_FORGET_PASSWORD
+import com.karimali.baseapp.common.utils.Route
 import com.karimali.baseapp.date.models.ClientModel
 import com.karimali.baseapp.date.models.ResponseModel
 import retrofit2.http.Field
@@ -17,33 +13,44 @@ interface Services {
 
     // Auth apis //
     @FormUrlEncoded
-    @POST(LOGIN)
+    @POST(Route.LOGIN)
     suspend fun login(
         @Field("phone") phone:String ,
         @Field("password") password:String ,
     ):ResponseModel<ClientModel>
 
     @FormUrlEncoded
-    @POST(SEND_CODE)
+    @POST(Route.REGISTRATION)
+    suspend fun registration(
+        @Field("phone") phone:String ,
+        @Field("first_name") firstName:String ,
+        @Field("last_name") lastName:String ,
+        @Field("password") password:String ,
+        @Field("confirm_password") confirmPassword:String ,
+        @Field("code") code:String ,
+    ):ResponseModel<ClientModel>
+
+    @FormUrlEncoded
+    @POST(Route.SEND_CODE)
     suspend fun sendCode(
         @Field("phone") phone:String
     ):ResponseModel<Any>
 
     @FormUrlEncoded
-    @POST(SEND_CODE_FORGET_PASSWORD)
+    @POST(Route.SEND_CODE_FORGET_PASSWORD)
     suspend fun sendCodeForForgetPassword(
         @Field("phone") phone:String
     ):ResponseModel<Any>
 
     @FormUrlEncoded
-    @POST(CONFIRM_CODE)
+    @POST(Route.CONFIRM_CODE)
     suspend fun confirmCode(
         @Field("phone") phone:String ,
         @Field("code") code:String
     ):ResponseModel<Any>
 
     @FormUrlEncoded
-    @POST(RESET_PASSWORD)
+    @POST(Route.RESET_PASSWORD)
     suspend fun resetPassword(
         @Field("phone") phone:String ,
         @Field("code") code:String ,

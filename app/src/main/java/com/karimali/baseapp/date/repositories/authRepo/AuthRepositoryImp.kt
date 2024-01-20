@@ -9,6 +9,24 @@ class AuthRepositoryImp @Inject constructor(private val services: Services?) :Au
     override suspend fun login(phone: String, password: String): ResponseModel<ClientModel>
     = services!!.login(phone, password)
 
+    override suspend fun registration(
+        phone: String,
+        firstName: String,
+        lastName: String,
+        password: String,
+        confirmPassword: String,
+        code: String
+    ): ResponseModel<ClientModel> {
+        return services!!.registration(
+            phone = phone,
+            firstName = firstName,
+            lastName = lastName,
+            password = password,
+            confirmPassword = confirmPassword,
+            code = code
+        )
+    }
+
     override suspend fun sendCode(phone: String): ResponseModel<Any> = services!!.sendCode(phone)
 
     override suspend fun sendCodeForForgetPassword(phone: String): ResponseModel<Any>

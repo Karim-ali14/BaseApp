@@ -2,7 +2,6 @@ package com.karimali.baseapp.date.repositories.authRepo
 
 import com.karimali.baseapp.date.models.ClientModel
 import com.karimali.baseapp.date.models.ResponseModel
-import retrofit2.http.Field
 
 interface AuthRepository {
 
@@ -10,6 +9,16 @@ interface AuthRepository {
         phone:String,
         password:String
     ): ResponseModel<ClientModel>
+
+    suspend fun registration(
+        phone:String ,
+        firstName:String ,
+        lastName:String ,
+        password:String ,
+        confirmPassword:String ,
+        code:String ,
+    ):ResponseModel<ClientModel>
+
 
     suspend fun sendCode(
         phone:String

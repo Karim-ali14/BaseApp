@@ -38,6 +38,41 @@ class AuthViewModel @Inject constructor(
         return loginDateFlow
     }
 
+    fun registration(
+        phone:String,
+        firstName:String,
+        lastName:String,
+        password:String,
+        confirmPassword:String,
+        code:String,
+    ) : LiveData<ResultState<ClientModel>> {
+        val loginDateFlow: MutableLiveData<ResultState<ClientModel>> = MutableLiveData()
+
+        performNetworkOp(
+            startCall = { loginDateFlow.postValue(ResultState.Loading) },
+            networkCall = { authRepository.registration(
+                phone = phone ,
+                firstName = firstName,
+                lastName = lastName,
+                password = password,
+                confirmPassword = confirmPassword,
+                code = code) },
+            doOnMainThread = { response ->
+                val result =
+                    if (response.status)
+                        ResultState.Success(response.data,response.message)
+                    else
+                        ResultState.Error(response.message)
+
+                loginDateFlow.value = result
+            },
+            onError = {
+                loginDateFlow.postValue(handleCommonErrors(it))
+            }
+        )
+        return loginDateFlow
+    }
+
     fun sendCode(
         phone:String
     ): LiveData<ResultState<Any>> {
