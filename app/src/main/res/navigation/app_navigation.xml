@@ -8,6 +8,7 @@
 
     <include app:graph="@navigation/auth_navigation" />
 
+    <include app:graph="@navigation/home_navigation"/>
 
     <fragment
         android:id="@+id/splashScreen"
@@ -16,20 +17,17 @@
         tools:layout="@layout/fragment_splash_screen" >
         <action
             android:id="@+id/action_splashScreen_to_auth_navigation"
-            app:destination="@id/auth_navigation"/>
-        <action
-            android:id="@+id/action_splashScreen_to_navigation_home"
-            app:destination="@id/navigation_home"
+            app:destination="@id/auth_navigation"
             app:launchSingleTop="true"
             app:popUpTo="@id/navigation_home"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashScreen_to_home_navigation"
+            app:destination="@id/home_navigation" />
+
+
     </fragment>
 
 
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.karimali.baseapp.ui.fragments.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
 
 </navigation>

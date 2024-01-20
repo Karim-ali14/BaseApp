@@ -2,6 +2,7 @@ package com.karimali.baseapp.ui.fragments.auth
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -18,6 +19,7 @@ import com.karimali.baseapp.common.extensions.nameValidation
 import com.karimali.baseapp.common.extensions.pickImages
 import com.karimali.baseapp.common.extensions.toStringRequestBody
 import com.karimali.baseapp.common.utils.Constants
+import com.karimali.baseapp.common.utils.Constants.FilePickerConst.REQUEST_CODE_PROFILE_PHOTO
 import com.karimali.baseapp.databinding.FragmentCompleteProfileScreenBinding
 import com.karimali.baseapp.ui.activities.MainActivity
 import com.karimali.baseapp.ui.base.BaseFragment
@@ -35,6 +37,7 @@ class CompleteProfileScreen : BaseFragment<FragmentCompleteProfileScreenBinding>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         eventClicks()
+        listingToPickFile()
     }
 
     private fun validateDate(): Boolean {
@@ -43,6 +46,7 @@ class CompleteProfileScreen : BaseFragment<FragmentCompleteProfileScreenBinding>
             if (
                 selectedUserImage.isEmptyIconValidation(binding!!.userImg) &&
                 firstNameInput.nameValidation() &&
+                lastNameInput.nameValidation() &&
                 passwordInput.isValidPassword() &&
                 confirmPasswordInput.isValidPassword() &&
                 passwordInput.confirmPasswordValidation(confirmPasswordInput)
@@ -57,7 +61,11 @@ class CompleteProfileScreen : BaseFragment<FragmentCompleteProfileScreenBinding>
         binding!!.apply {
 
             userImg.setOnClickListener {
-                requireActivity().pickImages(KotConstants.FILE_TYPE_IMAGE_ALL,true)
+                requireActivity().pickImages(
+                    KotConstants.FILE_TYPE_IMAGE_ALL,
+                    false,
+                    requestCode = REQUEST_CODE_PROFILE_PHOTO
+                )
             }
 
             signUpBtu.setOnClickListener {
@@ -97,8 +105,8 @@ class CompleteProfileScreen : BaseFragment<FragmentCompleteProfileScreenBinding>
         (requireActivity() as MainActivity).onPickProfileImagesResult = { requestCode, resultCode, data ->
             requireActivity().handlingFilePickingDataSingle(requestCode, resultCode, data).apply {
                 this?.let {
-
-                        selectedUserImage = this
+                        Log.i("imageUrl",it)
+                        selectedUserImage = it
                         binding!!.userImg.loadingImageUrl(selectedUserImage)
                         selectedUserImage.isEmptyIconValidation(binding!!.userImg)
                 }

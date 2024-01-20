@@ -13,7 +13,9 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.karimali.baseapp.R
+import com.karimali.baseapp.common.extensions.closeKeyboard
 import com.karimali.baseapp.common.extensions.isCodeVerificationFieldNotEmpty
+import com.karimali.baseapp.common.extensions.openKeyboard
 import com.karimali.baseapp.common.utils.Enums
 import com.karimali.baseapp.common.utils.Enums.NavigationTypes.SignUp
 import com.karimali.baseapp.databinding.FragmentVerificationScreenBinding
@@ -37,6 +39,8 @@ class VerificationScreen : BaseFragment<FragmentVerificationScreenBinding>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        phone = args.phone
+
         eventClicks()
 
         bindViews()
@@ -102,6 +106,7 @@ class VerificationScreen : BaseFragment<FragmentVerificationScreenBinding>
         tBox4 = binding!!.numBox4
 
         tBox1.requestFocus()
+        requireActivity().openKeyboard(tBox1)
 
     }
 

@@ -80,9 +80,16 @@ class LoginScreen : BaseFragment<FragmentLoginScreenBinding>
                 showToasts = true,
                 onSuccess = {
                     saveClientDate(it)
+                    navigateToHome()
                 }
             )
         }
+    }
+
+    private fun navigateToHome() {
+        navController!!.navigate(
+            LoginScreenDirections.actionLoginScreenToSignUpScreen()
+        )
     }
 
     private fun saveClientDate(clientModel: ClientModel?) {
