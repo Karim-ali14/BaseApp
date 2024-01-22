@@ -23,4 +23,5 @@
     <color name="radio_button_color">#4DC591</color>
     <color name="see_all_color">#6F7E93</color>
     <color name="product_background_color">#F3F3F3</color>
+    <color name="price_color">#0ABCB2</color>
 </resources>

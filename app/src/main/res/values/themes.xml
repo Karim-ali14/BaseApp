@@ -75,6 +75,27 @@
         <item name="android:fontFamily">@font/inter_medium</item>
     </style>
 
+    <style name="textStyleWithColorSecondaryInterMedium11dot52sp">
+        <item name="android:textSize">11.52sp</item>
+        <item name="android:textColor">?attr/colorSecondary</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="textStyleWithWhiteInterMedium11dot52sp">
+        <item name="android:textSize">11.52sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="textStyleWithPriceColorMedium10dot56sp">
+        <item name="android:textSize">10.56sp</item>
+        <item name="android:textColor">@color/price_color</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
     <style name="placeHolderEdittextStyleWithInterMedium14sp">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">?attr/colorSecondaryVariant</item>

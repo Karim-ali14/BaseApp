@@ -38,5 +38,6 @@
     <string name="name_validate_error">Name should not contain special characters or numbers</string>
     <string name="password_is_not_valid">password must be 8 or more characters with at least alphabetical</string>
     <string name="see_all">See all</string>
+    <string name="add">Add</string>
 
 </resources>
