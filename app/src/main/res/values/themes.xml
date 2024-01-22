@@ -82,10 +82,23 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
+    <style name="textStyleWithDescriptionColorInterMedium10sp">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/description_color</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
     <style name="textStyleWithWhiteInterMedium11dot52sp">
         <item name="android:textSize">11.52sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="textStyleWithWhiteInterRegular11dot52sp">
+        <item name="android:textSize">11.52sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
@@ -93,6 +106,13 @@
         <item name="android:textSize">10.56sp</item>
         <item name="android:textColor">@color/price_color</item>
         <item name="android:fontFamily">@font/inter_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="textStyleWithSeeAllColorMedium10dot56sp">
+        <item name="android:textSize">10.56sp</item>
+        <item name="android:textColor">@color/see_all_color</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
