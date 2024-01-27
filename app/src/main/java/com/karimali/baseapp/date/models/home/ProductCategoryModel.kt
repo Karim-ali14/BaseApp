@@ -11,6 +11,6 @@ data class ProductCategoryModel(
     val name_ar: String,
     val name_en: String,
     val name: String,
-    val products: List<ProductModel>,
+    val products: ArrayList<ProductModel>,
     val updated_at: String
 ):Parcelable

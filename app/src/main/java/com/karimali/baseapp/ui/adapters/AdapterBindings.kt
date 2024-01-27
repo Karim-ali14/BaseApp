@@ -1,27 +1,35 @@
 package com.karimali.baseapp.ui.adapters
 
+import android.graphics.Color
 import android.os.Build
 import android.text.Html
 import android.view.View
 import android.view.ViewGroup.MarginLayoutParams
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputLayout
 import com.karimali.baseapp.R
 import com.karimali.baseapp.databinding.*
+import com.karimali.baseapp.date.models.home.BannerModel
+import com.karimali.baseapp.date.models.home.CategoryModel
+import com.karimali.baseapp.date.models.home.ProductCategoryModel
+import com.karimali.baseapp.date.models.home.ProductModel
+import com.karimali.baseapp.date.models.home.ServiceModel
 import java.util.*
 import kotlin.math.roundToInt
 
 
 typealias OnViewItemsPressed<T> = (View,T) -> Unit
 
-//BindingAdapter For Bind Any Generic Recycler View Adapter
+////////////////////////////////////////////////////////////////
+//////////////////// TextView Binding Adapter//////////////////
 @BindingAdapter("showHtmlText")
 fun TextView.showHtmlText(htmlText:String?) {
     if (!htmlText.isNullOrEmpty()) {
@@ -33,8 +41,8 @@ fun TextView.showHtmlText(htmlText:String?) {
         }
     }
 }
-
-//BindingAdapter ForCircularProgressButton enable
+////////////////////////////////////////////////////////////////
+////// BindingAdapter ForCircularProgressButton enable ////////
 @BindingAdapter("isEnable")
 fun CircularProgressButton.isButtonEnable(isTrue:Boolean) {
     this.isEnabled = isTrue
@@ -46,39 +54,16 @@ fun CircularProgressButton.isButtonEnable(isTrue:Boolean) {
         )
     )
 }
-//BindingAdapter For Bind Any Generic Recycler View Adapter
+
+////////////////////////////////////////////////////////////////
+/////////////// Handle show or hidden views ///////////////////
 @BindingAdapter("isVisible")
 fun View.isVisible(isTrue:Boolean) {
     visibility = if(isTrue) View.VISIBLE else View.GONE
 }
 
-
-@BindingAdapter(value = ["recyclerAdapter","isLinear","cols","isHorizontal"], requireAll = false)
-fun <T : Any> RecyclerView.setup(customAdapter: GenericRecyclerAdapter<T>, isLinear:Boolean = true, cols : Int? = 2, isHorizontal : Boolean = false){
-    val orientation = if(isHorizontal) RecyclerView.HORIZONTAL else RecyclerView.VERTICAL
-    adapter = customAdapter
-    layoutManager = if(isLinear) LinearLayoutManager(context,orientation,false) else GridLayoutManager(context,cols?:2)
-}
-
-@BindingAdapter(value = ["recyclerAdapter","isLinear","cols","isHorizontal"], requireAll = false)
-fun <T : Any> RecyclerView.setup(customAdapter: RecyclerView.Adapter<*>, isLinear:Boolean = true, cols : Int? = 2, isHorizontal : Boolean = false){
-    val orientation = if(isHorizontal) RecyclerView.HORIZONTAL else RecyclerView.VERTICAL
-    adapter = customAdapter
-    layoutManager = if(isLinear) LinearLayoutManager(context,orientation,false) else GridLayoutManager(context,cols?:2)
-}
-@BindingAdapter(value = ["setFocusedMode"])
-fun TextInputLayout.setFocusedMode(focusedMode:Boolean){
-    this.editText?.isFocusable = focusedMode
-    this.editText?.setTextColor(
-        if (focusedMode)
-            ContextCompat.getColor(this.context,R.color.black)
-        else
-            ContextCompat.getColor(this.context,R.color.hint_color)
-    )
-    if (!focusedMode)
-        this.setEndIconOnClickListener {  }
-}
-
+////////////////////////////////////////////////////////////////
+/////////////// Handle set margin to views ////////////////////
 @BindingAdapter("marginHorizontalBinding")
 fun setMarginHorizontal(view: View, marginHorizontal: Float) {
     val layoutParams = view.layoutParams as MarginLayoutParams
@@ -117,6 +102,51 @@ fun setMarginBottom(view: View, marginVertical: Float) {
     )
     view.layoutParams = layoutParams
 }
+
+////////////////////////////////////////////////////////////////
+// BindingAdapter For Bind Any Generic Recycler View Adapter //
+
+@BindingAdapter(value = ["recyclerAdapter","isLinear","cols","isHorizontal"], requireAll = false)
+fun <T : Any> RecyclerView.setup(customAdapter: GenericRecyclerAdapter<T>, isLinear:Boolean = true, cols : Int? = 2, isHorizontal : Boolean = false){
+    val orientation = if(isHorizontal) RecyclerView.HORIZONTAL else RecyclerView.VERTICAL
+    adapter = customAdapter
+    layoutManager = if(isLinear) LinearLayoutManager(context,orientation,false) else GridLayoutManager(context,cols?:2)
+}
+
+@BindingAdapter(value = ["recyclerAdapter","isLinear","cols","isHorizontal"], requireAll = false)
+fun <T : Any> RecyclerView.setup(customAdapter: RecyclerView.Adapter<*>, isLinear:Boolean = true, cols : Int? = 2, isHorizontal : Boolean = false){
+    val orientation = if(isHorizontal) RecyclerView.HORIZONTAL else RecyclerView.VERTICAL
+    adapter = customAdapter
+    layoutManager = if(isLinear) LinearLayoutManager(context,orientation,false) else GridLayoutManager(context,cols?:2)
+}
+
+////////////////////////////////////////////////////////////////
+////////////////////// TextInputLayout ////////////////////////
+
+@BindingAdapter(value = ["setFocusedMode"])
+fun TextInputLayout.setFocusedMode(focusedMode:Boolean){
+    this.editText?.isFocusable = focusedMode
+    this.editText?.setTextColor(
+        if (focusedMode)
+            ContextCompat.getColor(this.context,R.color.black)
+        else
+            ContextCompat.getColor(this.context,R.color.hint_color)
+    )
+    if (!focusedMode)
+        this.setEndIconOnClickListener {  }
+}
+
+////////////////////////////////////////////////////////////////
+////////////////////// TextInputLayout ////////////////////////
+@BindingAdapter(value = ["setCardBackgroundColor"])
+fun MaterialCardView.setCardBackgroundColor(cardColor:String){
+    try {
+        this.setCardBackgroundColor(Color.parseColor(cardColor))
+    }catch (e:Exception){
+        this.setCardBackgroundColor(ContextCompat.getColor(this.context,R.color.orange_color))
+    }
+}
+
 object AdapterBindings {
 
     fun<T> shimmerBinding() : GenericSimpleRecyclerBindingInterface<T> {
@@ -125,22 +155,54 @@ object AdapterBindings {
         }
     }
 
-//    fun bannerBinding() = object :GenericSimpleRecyclerBindingInterface<Banner>{
-//        override fun bindData(item: Banner, view: View,position: Int?) {
-//            DataBindingUtil.bind<ImageBannerItemLayoutBinding>(view)?.apply {
-//                image.loadImage(item.imagePath)
-//            }
-//        }
-//    }
-//
-//    fun imageBinding() = object :GenericSimpleRecyclerBindingInterface<Banner>{
-//        override fun bindData(item: Banner, view: View,position: Int?) {
-//            DataBindingUtil.bind<ImageItemLayoutBinding>(view)?.apply {
-//                image.loadImage(item.imagePath)
-//            }
-//        }
-//    }
-//
+    fun bannerItemBinding() = object :GenericSimpleRecyclerBindingInterface<BannerModel>{
+        override fun bindData(item: BannerModel, view: View,position: Int?) {
+            DataBindingUtil.bind<ImageBannerItemLayoutBinding>(view)?.apply {
+                bannerImg.setImageResource(item.image)
+            }
+        }
+    }
+
+    fun sectionItemBinding() = object :GenericSimpleRecyclerBindingInterface<CategoryModel>{
+        override fun bindData(item: CategoryModel, view: View,position: Int?) {
+            DataBindingUtil.bind<SectionItemLayoutBinding>(view)?.apply {
+                sectionItem = item
+            }
+        }
+    }
+
+    fun productCategoryItemBinding() = object :GenericSimpleRecyclerBindingInterface<ProductCategoryModel>{
+        override fun bindData(item: ProductCategoryModel, view: View,position: Int?) {
+            DataBindingUtil.bind<SeeAllTitleItemLayoutBinding>(view)?.apply {
+                this.title = item.name
+
+                recycler.setup(
+                    GenericRecyclerAdapter(
+                        item.products,
+                        R.layout.product_horizontal_item_layout,
+                        productItemBinding()
+                    ), isHorizontal = true
+                )
+            }
+        }
+    }
+
+    fun productItemBinding() = object :GenericSimpleRecyclerBindingInterface<ProductModel>{
+        override fun bindData(item: ProductModel, view: View, position: Int?) {
+            DataBindingUtil.bind<ProductHorizontalItemLayoutBinding>(view)?.apply {
+                productItem = item
+            }
+        }
+    }
+
+    fun serviceItemBinding() = object :GenericSimpleRecyclerBindingInterface<ServiceModel>{
+        override fun bindData(item: ServiceModel, view: View, position: Int?) {
+            DataBindingUtil.bind<ServiceHorizontalItemLayoutBinding>(view)?.apply {
+                serviceItem = item
+            }
+        }
+    }
+
 //    fun optionSelectorItemAdapterOnPress(onPress: (SelectorItemWithTextAndIcon) -> Unit) = object :
 //        OnPressedInterface<SelectorItemWithTextAndIcon> {
 //        override fun onPressed(item: Any?) {

@@ -122,6 +122,7 @@ object Constants {
     val destinationWithNoToolBar = arrayListOf(
         R.id.splashScreen,
         R.id.welcomeScreen,
+        R.id.homeScreen,
     )
     val destinationShowSkipText = arrayListOf(
         R.id.loginScreen,

@@ -42,5 +42,6 @@
     <string name="view">View</string>
     <string name="sections">Sections</string>
     <string name="services">Services</string>
-
+    <string name="dollar_sign">$ %1s</string>
+    <string name="start_from">Start from</string>
 </resources>

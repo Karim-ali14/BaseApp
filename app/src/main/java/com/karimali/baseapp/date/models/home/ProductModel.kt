@@ -14,6 +14,7 @@ data class ProductModel(
     val image: String,
     val name_ar: String,
     val name_en: String,
+    val name: String,
     val number: String,
     val pivot: PivotModel,
     val price: String,

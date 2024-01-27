@@ -8,7 +8,10 @@ import kotlinx.parcelize.Parcelize
 data class ServiceModel(
     val created_at: String?= null,
     val id: Int? = 0,
+    val image: String? = null,
     val name: String?= null,
+    val description: String?= null,
+    val price: String?= null,
     val name_ar: String?= null,
     val name_en: String?= null,
     val updated_at: String?= null

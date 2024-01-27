@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class HomeDateModel(
-    val categories: List<CategoryModel>,
-    val products: List<ProductCategoryModel>,
-    val services: List<ServiceModel>
+    val categories: ArrayList<CategoryModel>,
+    val products: ArrayList<ProductCategoryModel>,
+    val services: ArrayList<ServiceModel>
 ):Parcelable

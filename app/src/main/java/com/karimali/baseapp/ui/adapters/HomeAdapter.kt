@@ -10,6 +10,7 @@ import com.karimali.baseapp.common.utils.Enums
 import com.karimali.baseapp.databinding.BannerItemLayoutBinding
 import com.karimali.baseapp.databinding.RecyclerItemLayoutBinding
 import com.karimali.baseapp.databinding.SeeAllTitleItemLayoutBinding
+import com.karimali.baseapp.date.models.home.BannerModel
 import com.karimali.baseapp.date.models.home.CategoryModel
 import com.karimali.baseapp.date.models.home.ProductCategoryModel
 import com.karimali.baseapp.date.models.home.ServiceModel
@@ -17,7 +18,7 @@ import com.zhpan.indicator.enums.IndicatorSlideMode
 import com.zhpan.indicator.enums.IndicatorStyle
 
 class HomeAdapter(
-    val bannerAdapter: GenericRecyclerAdapter<Int>?,
+    val bannerAdapter: GenericRecyclerAdapter<BannerModel>?,
     val sectionAdapter: GenericRecyclerAdapter<CategoryModel>?,
     val productCategoriesAdapter: GenericRecyclerAdapter<ProductCategoryModel>?,
     val servicesAdapter: GenericRecyclerAdapter<ServiceModel>?,
@@ -93,7 +94,7 @@ class HomeAdapter(
                 )
             }
             Enums.HomeItemsType.Section.ordinal -> {
-                ServiceViewHolder(
+                SectionViewHolder(
                     SeeAllTitleItemLayoutBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,

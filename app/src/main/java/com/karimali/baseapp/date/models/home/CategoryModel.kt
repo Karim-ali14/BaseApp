@@ -11,5 +11,6 @@ data class CategoryModel(
     val id: Int,
     val name_ar: String,
     val name_en: String,
+    val name: String,
     val status: String
 ):Parcelable
