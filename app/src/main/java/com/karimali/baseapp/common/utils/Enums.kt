@@ -9,10 +9,16 @@ object Enums {
         Email("email")
     }
 
-
     enum class NavigationTypes {
         SignUp,
         ResetPassword
+    }
+
+    enum class HomeItemsType{
+        Banners,
+        Section,
+        Products,
+        Services,
     }
 
 

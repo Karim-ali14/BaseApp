@@ -1,5 +1,10 @@
 package com.karimali.baseapp.date.models.home
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+
+@Parcelize
 data class CategoryModel(
     val color: String,
     val icon: String,
@@ -7,4 +12,4 @@ data class CategoryModel(
     val name_ar: String,
     val name_en: String,
     val status: String
-)
+):Parcelable

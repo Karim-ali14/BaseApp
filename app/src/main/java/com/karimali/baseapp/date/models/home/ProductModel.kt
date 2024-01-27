@@ -1,5 +1,9 @@
 package com.karimali.baseapp.date.models.home
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class ProductModel(
     val category_id: String,
     val created_at: String,
@@ -15,4 +19,4 @@ data class ProductModel(
     val price: String,
     val status: String,
     val updated_at: String
-)
+):Parcelable

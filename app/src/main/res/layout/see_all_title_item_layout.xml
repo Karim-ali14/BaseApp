@@ -23,7 +23,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/title"
+                android:id="@+id/title_txt"
                 style="@style/TextStyleWithBlackInterMedium15sp"
                 android:text="@{title}"
                 app:layout_constraintTop_toTopOf="parent"
