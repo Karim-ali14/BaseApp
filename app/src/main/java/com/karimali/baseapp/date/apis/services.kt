@@ -4,6 +4,7 @@ package com.karimali.baseapp.date.apis
 import com.karimali.baseapp.common.utils.Route
 import com.karimali.baseapp.date.models.ClientModel
 import com.karimali.baseapp.date.models.ResponseModel
+import com.karimali.baseapp.date.models.home.HomeDateModel
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.Field
@@ -17,6 +18,7 @@ import retrofit2.http.PartMap
 interface Services {
 
     // Auth apis //
+
     @FormUrlEncoded
     @POST(Route.LOGIN)
     suspend fun login(
@@ -58,5 +60,11 @@ interface Services {
         @Field("password") password:String ,
         @Field("confirm-password") confirmPassword:String
     ):ResponseModel<Any>
+
+
+    // home apis //
+
+    @GET(Route.HOME)
+    suspend fun fetchHomeDate():ResponseModel<HomeDateModel>
 
 }
