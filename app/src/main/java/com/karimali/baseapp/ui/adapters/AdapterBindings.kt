@@ -174,7 +174,7 @@ object AdapterBindings {
     fun productCategoryItemBinding() = object :GenericSimpleRecyclerBindingInterface<ProductCategoryModel>{
         override fun bindData(item: ProductCategoryModel, view: View,position: Int?) {
             DataBindingUtil.bind<SeeAllTitleItemLayoutBinding>(view)?.apply {
-                this.title = item.name
+                this.title = item.name_en
 
                 recycler.setup(
                     GenericRecyclerAdapter(

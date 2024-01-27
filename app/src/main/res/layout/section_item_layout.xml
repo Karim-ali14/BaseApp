@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{sectionItem.name}"
+                android:text="@{sectionItem.name_en}"
                 style="@style/placeHolderEdittextStyleWithInterMedium15sp" />
 
             <Space

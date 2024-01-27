@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/product_name"
                 style="@style/textStyleWithColorSecondaryInterMedium11dot52sp"
-                android:text="@{productItem.name}"
+                android:text="@{productItem.name_en}"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:textAlignment="viewStart" />
