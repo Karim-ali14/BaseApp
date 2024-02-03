@@ -12,6 +12,7 @@ data class ProductModel(
     val discount: String,
     val id: Int,
     val image: String,
+    val imagePath: String,
     val name_ar: String,
     val name_en: String,
     val name: String,

@@ -41,6 +41,10 @@ fun TextView.showHtmlText(htmlText:String?) {
         }
     }
 }
+@BindingAdapter("bindTextColor")
+fun TextView.bindTextColor(color:String?) {
+    this.setTextColor(Color.parseColor(color))
+}
 ////////////////////////////////////////////////////////////////
 ////// BindingAdapter ForCircularProgressButton enable ////////
 @BindingAdapter("isEnable")
@@ -137,13 +141,21 @@ fun TextInputLayout.setFocusedMode(focusedMode:Boolean){
 }
 
 ////////////////////////////////////////////////////////////////
-////////////////////// TextInputLayout ////////////////////////
+////////////////////// setBackground //////////////////////////
 @BindingAdapter(value = ["setCardBackgroundColor"])
 fun MaterialCardView.setCardBackgroundColor(cardColor:String){
     try {
         this.setCardBackgroundColor(Color.parseColor(cardColor))
     }catch (e:Exception){
         this.setCardBackgroundColor(ContextCompat.getColor(this.context,R.color.orange_color))
+    }
+}
+@BindingAdapter(value = ["setBackgroundColor"])
+fun View.setBackgroundColor(cardColor:String){
+    try {
+        this.setBackgroundColor(Color.parseColor(cardColor))
+    }catch (e:Exception){
+        this.setBackgroundColor(ContextCompat.getColor(this.context,R.color.orange_color))
     }
 }
 
