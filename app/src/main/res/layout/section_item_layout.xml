@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/back_icon"
                 android:rotation="180"
-                app:tint="@{sectionItem.text_color}"/>
+                bind:setImageTint="@{sectionItem.text_color}"/>
 
         </LinearLayout>
 

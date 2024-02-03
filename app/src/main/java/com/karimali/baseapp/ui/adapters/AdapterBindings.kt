@@ -1,10 +1,12 @@
 package com.karimali.baseapp.ui.adapters
 
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Build
 import android.text.Html
 import android.view.View
 import android.view.ViewGroup.MarginLayoutParams
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -158,8 +160,6 @@ fun MaterialCardView.setCardBackgroundColor(cardColor:String){
     }
 }
 
-
-
 @BindingAdapter(value = ["setBackgroundColor"])
 fun View.setBackgroundColor(cardColor:String){
     try {
@@ -168,6 +168,12 @@ fun View.setBackgroundColor(cardColor:String){
         this.setBackgroundColor(ContextCompat.getColor(this.context,R.color.orange_color))
     }
 }
+@BindingAdapter(value = ["setImageTint"])
+fun ImageView.setImageTint(imageTintColor:String){
+    this.setColorFilter(Color.parseColor(imageTintColor))
+}
+
+
 
 object AdapterBindings {
 
@@ -193,11 +199,13 @@ object AdapterBindings {
         }
     }
 
-    fun productCategoryItemBinding() = object :GenericSimpleRecyclerBindingInterface<ProductCategoryModel>{
+    fun productCategoryItemBinding(showAllAction:(ProductCategoryModel) -> Unit) = object :GenericSimpleRecyclerBindingInterface<ProductCategoryModel>{
         override fun bindData(item: ProductCategoryModel, view: View,position: Int?) {
             DataBindingUtil.bind<SeeAllTitleItemLayoutBinding>(view)?.apply {
                 this.title = item.name_en
-
+                this.seeAllBtu.setOnClickListener {
+                    showAllAction.invoke(item)
+                }
                 recycler.setup(
                     GenericRecyclerAdapter(
                         item.products,

@@ -9,6 +9,7 @@ import com.karimali.baseapp.R
 import com.karimali.baseapp.common.extensions.onBackButtonPressed
 import com.karimali.baseapp.common.extensions.setup
 import com.karimali.baseapp.common.extensions.toArrayList
+import com.karimali.baseapp.common.utils.Enums
 import com.karimali.baseapp.databinding.FragmentHomeBinding
 import com.karimali.baseapp.date.models.home.BannerModel
 import com.karimali.baseapp.date.models.home.CategoryModel
@@ -33,6 +34,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private lateinit var sectionAdapter:GenericRecyclerAdapter<CategoryModel>
     private lateinit var productCategoryAdapter:GenericRecyclerAdapter<ProductCategoryModel>
     private lateinit var serviceAdapter:GenericRecyclerAdapter<ServiceModel>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initAdapters()
@@ -52,7 +54,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         productCategoryAdapter = GenericRecyclerAdapter(
             arrayListOf(),
             R.layout.see_all_title_item_layout,
-            AdapterBindings.productCategoryItemBinding()
+            AdapterBindings.productCategoryItemBinding(::navigateToShowAllProductsByTagId)
         )
         serviceAdapter = GenericRecyclerAdapter(
             arrayListOf(),
@@ -63,7 +65,30 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             bannerAdapter = bannerAdapter,
             sectionAdapter = sectionAdapter,
             productCategoriesAdapter = productCategoryAdapter,
-            servicesAdapter = serviceAdapter
+            servicesAdapter = serviceAdapter,
+            showAllSection = ::navigateToShowAllSections,
+            showAllServices = ::navigateToShowAllServices
+        )
+    }
+
+    private fun navigateToShowAllServices() {
+
+    }
+
+    private fun navigateToShowAllSections() {
+        navController!!.navigate(
+            HomeFragmentDirections.actionHomeScreenToShowAllSectionData(
+                Enums.HomeItemsType.Section
+            )
+        )
+    }
+
+    private fun navigateToShowAllProductsByTagId(productCategoryModel: ProductCategoryModel) {
+        navController!!.navigate(
+            HomeFragmentDirections.actionHomeScreenToShowAllProductData(
+                type = Enums.HomeItemsType.Products,
+                productCategoryItem = productCategoryModel
+            )
         )
     }
 

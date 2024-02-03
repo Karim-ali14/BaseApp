@@ -76,4 +76,8 @@ class MainActivity : AppCompatActivity() {
             Log.i("File","Not Error")
         }
     }
+
+    fun setToolBarTitle(title:String){
+        binding.toolbar.title = title
+    }
 }

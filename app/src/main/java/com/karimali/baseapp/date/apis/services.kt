@@ -4,7 +4,9 @@ package com.karimali.baseapp.date.apis
 import com.karimali.baseapp.common.utils.Route
 import com.karimali.baseapp.date.models.ClientModel
 import com.karimali.baseapp.date.models.ResponseModel
+import com.karimali.baseapp.date.models.home.CategoryModel
 import com.karimali.baseapp.date.models.home.HomeDateModel
+import com.karimali.baseapp.date.models.home.ProductModel
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.Field
@@ -63,8 +65,14 @@ interface Services {
 
 
     // home apis //
-
     @GET(Route.HOME)
     suspend fun fetchHomeDate():ResponseModel<HomeDateModel>
+
+    @GET(Route.SHOW_ALL_CATEGORIES)
+    suspend fun fetchAllCategoryData():ResponseModel<ArrayList<CategoryModel>>
+    @GET(Route.SHOW_ALL_CATEGORIES)
+    suspend fun fetchAllProductData(
+        @Field("tag_id") tagId:String
+    ):ResponseModel<ArrayList<ProductModel>>
 
 }

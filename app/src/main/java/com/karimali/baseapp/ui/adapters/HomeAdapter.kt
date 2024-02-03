@@ -22,6 +22,8 @@ class HomeAdapter(
     val sectionAdapter: GenericRecyclerAdapter<CategoryModel>?,
     val productCategoriesAdapter: GenericRecyclerAdapter<ProductCategoryModel>?,
     val servicesAdapter: GenericRecyclerAdapter<ServiceModel>?,
+    val showAllSection:() -> Unit,
+    val showAllServices:() -> Unit,
 ):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class BannerViewHolder(val binding : BannerItemLayoutBinding) : RecyclerView.ViewHolder(binding.root){
         fun bindDate(){
@@ -54,6 +56,9 @@ class HomeAdapter(
         fun bindDate(){
             binding.apply {
                 binding.title = binding.root.context.getString(R.string.sections)
+                binding.seeAllBtu.setOnClickListener {
+                    showAllSection()
+                }
                 sectionAdapter?.apply {
                     binding.recycler.setup(this, isHorizontal = true)
                 }
@@ -75,6 +80,9 @@ class HomeAdapter(
         fun bindDate(){
             binding.apply {
                 binding.title = binding.root.context.getString(R.string.services)
+                binding.seeAllBtu.setOnClickListener {
+                    showAllServices()
+                }
                 servicesAdapter?.apply {
                     binding.recycler.setup(this, isHorizontal = true)
                 }

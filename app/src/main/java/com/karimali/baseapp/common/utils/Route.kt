@@ -13,5 +13,7 @@ object Route {
 
     // Home apis //
     const val HOME = "home"
+    const val SHOW_ALL_CATEGORIES = "categories"
+    const val SHOW_ALL_PRODUCTS= "categories"
 
 }

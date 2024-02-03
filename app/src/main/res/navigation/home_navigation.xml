@@ -10,6 +10,44 @@
         android:id="@+id/homeScreen"
         android:name="com.karimali.baseapp.ui.fragments.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeScreen_to_showAllProductData"
+            app:destination="@id/showAllProductData" />
+        <action
+            android:id="@+id/action_homeScreen_to_showAllSectionData"
+            app:destination="@id/showAllSectionData" />
+        <action
+            android:id="@+id/action_homeScreen_to_showAllServiceData"
+            app:destination="@id/showAllServiceData" />
+    </fragment>
+    <fragment
+        android:id="@+id/showAllProductData"
+        android:name="com.karimali.baseapp.ui.fragments.showAllData.ShowAllProductData"
+        android:label="ShowAllProductData" >
+        <argument
+            android:name="type"
+            app:argType="com.karimali.baseapp.common.utils.Enums$HomeItemsType" />
+        <argument
+            android:name="productCategoryItem"
+            app:argType="com.karimali.baseapp.date.models.home.ProductCategoryModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/showAllSectionData"
+        android:name="com.karimali.baseapp.ui.fragments.showAllData.ShowAllSectionData"
+        android:label="ShowAllSectionData" >
+        <argument
+            android:name="type"
+            app:argType="com.karimali.baseapp.common.utils.Enums$HomeItemsType" />
+    </fragment>
+    <fragment
+        android:id="@+id/showAllServiceData"
+        android:name="com.karimali.baseapp.ui.fragments.showAllData.ShowAllServiceData"
+        android:label="ShowAllServiceData" >
+        <argument
+            android:name="type"
+            app:argType="com.karimali.baseapp.common.utils.Enums$HomeItemsType" />
+    </fragment>
+
 
 </navigation>
