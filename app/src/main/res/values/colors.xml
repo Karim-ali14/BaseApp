@@ -22,7 +22,7 @@
     <color name="edit_text_background">#F6F6F6</color>
     <color name="radio_button_color">#4DC591</color>
     <color name="see_all_color">#6F7E93</color>
-    <color name="product_background_color">#F3F3F3</color>
+    <color name="component_background_color">#F3F3F3</color>
     <color name="price_color">#0ABCB2</color>
     <color name="description_color">#0D0D0D</color>
 </resources>

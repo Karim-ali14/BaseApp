@@ -6,17 +6,18 @@
 
     <data>
         <variable
-            name="serviceItem"
-            type="com.karimali.baseapp.date.models.home.ServiceModel" />
+            name="productItem"
+            type="com.karimali.baseapp.date.models.home.ProductModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="194dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="188dp"
         app:cardElevation="0dp"
         app:cardCornerRadius="@dimen/_7sdp"
         app:cardBackgroundColor="@color/component_background_color"
-        android:layout_marginStart="@dimen/_10sdp">
+        android:layout_marginHorizontal="@dimen/_5sdp"
+        android:layout_marginVertical="@dimen/_8sdp">
 
         <LinearLayout
             android:orientation="vertical"
@@ -27,28 +28,29 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="74dp"
+                android:layout_height="93dp"
                 android:layout_gravity="center_horizontal"
                 app:cardElevation="0dp"
                 app:cardCornerRadius="5dp">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    loadingImageUrl="@{serviceItem.imagePath}"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    bind:loadingImageUrl="@{productItem.imagePath}"/>
+
             </com.google.android.material.card.MaterialCardView>
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_5sdp" />
+                android:layout_height="@dimen/_6sdp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/product_name"
                 style="@style/textStyleWithColorSecondaryInterMedium11dot52sp"
-                android:text="@{serviceItem.name}"
+                android:text="@{productItem.name}"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:textAlignment="viewStart" />
@@ -58,44 +60,15 @@
                 android:layout_height="@dimen/_3sdp" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/Description_txt"
-                style="@style/textStyleWithDescriptionColorInterMedium10sp"
-                android:text="@{serviceItem.description}"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:textAlignment="viewStart" />
+                style="@style/textStyleWithPriceColorMedium10dot56sp"
+                android:textAlignment="viewStart"
+                android:text="@{String.format(@string/dollar_sign,productItem.price)}" />
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_5sdp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/start_from"
-                    style="@style/textStyleWithSeeAllColorMedium10dot56sp" />
-
-                <Space
-                    android:layout_width="5dp"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/textStyleWithPriceColorMedium10dot56sp"
-                    android:textAlignment="viewStart"
-                    android:text="@{String.format(@string/dollar_sign,serviceItem.price)}" />
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_5sdp" />
+                android:layout_height="@dimen/_7sdp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -103,10 +76,10 @@
                 android:paddingBottom="@dimen/_2sdp">
 
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_weight="3.5"
-                    android:layout_width="0dp"
+                    android:layout_weight="2.2"
+                    android:layout_width="85dp"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="?attr/colorSecondary"
+                    app:cardBackgroundColor="@color/orange_color"
                     app:cardCornerRadius="@dimen/_7sdp"
                     app:cardElevation="0dp">
 
@@ -117,23 +90,31 @@
                         android:paddingHorizontal="@dimen/_10sdp"
                         android:paddingVertical="@dimen/_6sdp">
 
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/besket_img" />
+
+                        <Space
+                            android:layout_width="@dimen/_2sdp"
+                            android:layout_height="wrap_content" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/view"
-                            style="@style/textStyleWithWhiteInterRegular11dot52sp"
+                            android:text="@string/add"
+                            style="@style/textStyleWithWhiteInterMedium11dot52sp"
 
                             />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <Space
-                    android:layout_width="@dimen/_8sdp"
+                    android:layout_width="@dimen/_5sdp"
                     android:layout_height="wrap_content" />
 
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
+                    android:layout_width="32dp"
                     android:layout_height="32dp"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="@dimen/_8sdp"
@@ -147,8 +128,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/mark_img"
-                            app:tint="@color/black" />
+                            android:src="@drawable/mark_img" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 

@@ -128,6 +128,14 @@
         <item name="android:fontFamily">@font/inter_medium</item>
     </style>
 
+    <style name="editTextStyleWithInterMedium15sp" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/hint_color</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
     <style name="TextStyleWithBlackInterMedium15sp">
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/black</item>

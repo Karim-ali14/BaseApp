@@ -10,5 +10,6 @@
     <dimen name="defaultMarginSide">@dimen/_10sdp</dimen>
     <dimen name="snackbar_icon_padding">10dp</dimen>
     <dimen name="default_horizontal_padding">@dimen/_10sdp</dimen>
+    <dimen name="search_bar_height">44dp</dimen>
 
 </resources>

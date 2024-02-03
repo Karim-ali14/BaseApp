@@ -16,6 +16,8 @@ import com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgre
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputLayout
 import com.karimali.baseapp.R
+import com.karimali.baseapp.common.extensions.gone
+import com.karimali.baseapp.common.extensions.visible
 import com.karimali.baseapp.databinding.*
 import com.karimali.baseapp.date.models.home.BannerModel
 import com.karimali.baseapp.date.models.home.CategoryModel
@@ -64,6 +66,11 @@ fun CircularProgressButton.isButtonEnable(isTrue:Boolean) {
 @BindingAdapter("isVisible")
 fun View.isVisible(isTrue:Boolean) {
     visibility = if(isTrue) View.VISIBLE else View.GONE
+}
+
+@BindingAdapter("handleVisibility")
+fun View.handleVisibility(show : Boolean) {
+    if (show) this.visible() else this.gone()
 }
 
 ////////////////////////////////////////////////////////////////
@@ -150,6 +157,9 @@ fun MaterialCardView.setCardBackgroundColor(cardColor:String){
         this.setCardBackgroundColor(ContextCompat.getColor(this.context,R.color.orange_color))
     }
 }
+
+
+
 @BindingAdapter(value = ["setBackgroundColor"])
 fun View.setBackgroundColor(cardColor:String){
     try {
