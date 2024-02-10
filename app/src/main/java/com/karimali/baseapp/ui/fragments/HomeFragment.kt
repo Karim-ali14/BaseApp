@@ -21,6 +21,7 @@ import com.karimali.baseapp.ui.adapters.GenericRecyclerAdapter
 import com.karimali.baseapp.ui.adapters.HomeAdapter
 import com.karimali.baseapp.ui.adapters.setup
 import com.karimali.baseapp.ui.base.BaseFragment
+import com.karimali.baseapp.ui.custom.RecyclerLayoutTypes
 import com.karimali.baseapp.ui.viewModles.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -103,12 +104,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun bindDate() {
         binding!!.apply {
-            homeDateRecycler.adapter = homeAdapter
-            homeDateRecycler.layoutManager = LinearLayoutManager(
-                requireContext(),
-                RecyclerView.VERTICAL,
-                false
-            )
+            homeDateRecycler.addAdapter(homeAdapter, recyclerType = RecyclerLayoutTypes.Linear, shimmerLayoutRes = R.layout.shimmer_home_data_layout)
         }
     }
 
@@ -117,7 +113,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             .observe(viewLifecycleOwner){ resultState ->
                 stateHandler(
                     result = resultState,
-                    isWithDialog = true,
+                    withShimmer = binding!!.homeDateRecycler,
                     onSuccess = {
                         updateAdapters(it)
                     }

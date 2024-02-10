@@ -25,7 +25,7 @@ class ShimmerdRecyclerView<in T> @JvmOverloads constructor(
     private var root : View = LayoutInflater.from(context).inflate(R.layout.shimmerd_recycler_view,this,true)!!
     private lateinit var shimmerAdapter : GenericRecyclerAdapter<Any?>
     private var selectedType : RecyclerLayoutTypes = RecyclerLayoutTypes.Linear
-    private lateinit var  customAdapter : GenericRecyclerAdapter<out T>
+    private lateinit var  customAdapter : RecyclerView.Adapter<*>
 
     private val rootBinding by lazy {
         ShimmerdRecyclerViewBinding.bind(root)
@@ -44,7 +44,7 @@ class ShimmerdRecyclerView<in T> @JvmOverloads constructor(
         customAdapter = adapter
         shimmerLayoutRes?.let { res ->
             shimmerAdapter = GenericRecyclerAdapter(
-                arrayListOf(null,null,null,null),
+                arrayListOf(null,null,null,null,null,null),
                 res,
                 AdapterBindings.shimmerBinding()
             )
@@ -55,8 +55,31 @@ class ShimmerdRecyclerView<in T> @JvmOverloads constructor(
                 RecyclerLayoutTypes.Linear -> rv.setup(adapter, isLinear = true)
                 RecyclerLayoutTypes.LinearHorizontal -> rv.setup(adapter, isHorizontal = true)
                 RecyclerLayoutTypes.Grid -> rv.setup(adapter, cols = cols , isLinear = false)
-                RecyclerLayoutTypes.Staggered -> rv.setupStaggered(adapter,cols)
-                RecyclerLayoutTypes.Flexed -> rv.setupFlexed(adapter,FlexDirection.COLUMN,JustifyContent.FLEX_START)
+//                RecyclerLayoutTypes.Staggered -> rv.setupStaggered(adapter,cols)
+                RecyclerLayoutTypes.FlexedColumn -> rv.setupFlexed(adapter,FlexDirection.COLUMN,JustifyContent.FLEX_START)
+                RecyclerLayoutTypes.FlexedRow -> rv.setupFlexed(adapter,FlexDirection.ROW,JustifyContent.FLEX_START)
+            }
+        }
+    }
+    fun addAdapter(adapter: RecyclerView.Adapter<*>,recyclerType : RecyclerLayoutTypes,cols : Int ? = 2 , shimmerLayoutRes : Int ?= null)  {
+        selectedType = recyclerType
+        customAdapter = adapter
+        shimmerLayoutRes?.let { res ->
+            shimmerAdapter = GenericRecyclerAdapter(
+                arrayListOf(null,null,null,null,null,null),
+                res,
+                AdapterBindings.shimmerBinding()
+            )
+        }
+
+        rootBinding.apply {
+            when(selectedType){
+                RecyclerLayoutTypes.Linear -> rv.setup(adapter, isLinear = true)
+                RecyclerLayoutTypes.LinearHorizontal -> rv.setup(adapter, isHorizontal = true)
+                RecyclerLayoutTypes.Grid -> rv.setup(adapter, cols = cols , isLinear = false)
+//                RecyclerLayoutTypes.Staggered -> rv.setupStaggered(adapter,cols)
+                RecyclerLayoutTypes.FlexedColumn -> rv.setupFlexed(adapter,FlexDirection.COLUMN,JustifyContent.FLEX_START)
+                RecyclerLayoutTypes.FlexedRow -> rv.setupFlexed(adapter,FlexDirection.ROW,JustifyContent.FLEX_START)
             }
         }
     }
@@ -68,18 +91,20 @@ class ShimmerdRecyclerView<in T> @JvmOverloads constructor(
                     RecyclerLayoutTypes.Linear -> rv.setup(shimmerAdapter, isLinear = true)
                     RecyclerLayoutTypes.Grid -> rv.setup(shimmerAdapter , cols = 2 , isLinear = false)
                     RecyclerLayoutTypes.LinearHorizontal -> rv.setup(shimmerAdapter, isHorizontal = true)
-                    RecyclerLayoutTypes.Staggered -> rv.setupStaggered(shimmerAdapter ,2)
-                    RecyclerLayoutTypes.Flexed -> rv.setupFlexed(shimmerAdapter,FlexDirection.COLUMN,JustifyContent.FLEX_START)
+//                    RecyclerLayoutTypes.Staggered -> rv.setupStaggered(shimmerAdapter ,2)
+                    RecyclerLayoutTypes.FlexedColumn -> rv.setupFlexed(shimmerAdapter,FlexDirection.COLUMN,JustifyContent.FLEX_START)
+                    RecyclerLayoutTypes.FlexedRow -> rv.setupFlexed(shimmerAdapter,FlexDirection.ROW,JustifyContent.FLEX_START)
                 }
             }
         }else{
             rootBinding.apply {
                 when(selectedType){
-                    RecyclerLayoutTypes.Linear -> rv.setup(customAdapter as GenericRecyclerAdapter<T>, isLinear = true)
-                    RecyclerLayoutTypes.LinearHorizontal -> rv.setup(customAdapter as GenericRecyclerAdapter<T>, isHorizontal = true)
-                    RecyclerLayoutTypes.Grid -> rv.setup(customAdapter as GenericRecyclerAdapter<T>, cols = 2 , isLinear = false)
-                    RecyclerLayoutTypes.Staggered -> rv.setupStaggered(customAdapter as GenericRecyclerAdapter<T>,2)
-                    RecyclerLayoutTypes.Flexed -> rv.setupFlexed(customAdapter as GenericRecyclerAdapter<T>,FlexDirection.COLUMN,JustifyContent.FLEX_START)
+                    RecyclerLayoutTypes.Linear -> rv.setup(customAdapter , isLinear = true)
+                    RecyclerLayoutTypes.LinearHorizontal -> rv.setup(customAdapter, isHorizontal = true)
+                    RecyclerLayoutTypes.Grid -> rv.setup(customAdapter , cols = 2 , isLinear = false)
+//                    RecyclerLayoutTypes.Staggered -> rv.setupStaggered(customAdapter as GenericRecyclerAdapter<T>,2)
+                    RecyclerLayoutTypes.FlexedColumn -> rv.setupFlexed(customAdapter ,FlexDirection.COLUMN,JustifyContent.FLEX_START)
+                    RecyclerLayoutTypes.FlexedRow -> rv.setupFlexed(customAdapter ,FlexDirection.ROW,JustifyContent.FLEX_START)
                 }
             }
         }
@@ -92,6 +117,7 @@ enum class RecyclerLayoutTypes {
     Linear,
     LinearHorizontal,
     Grid,
-    Flexed,
-    Staggered
+    FlexedColumn,
+    FlexedRow,
+//    Staggered
 }

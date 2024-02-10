@@ -16,6 +16,7 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.PartMap
+import retrofit2.http.Query
 
 interface Services {
 
@@ -72,7 +73,7 @@ interface Services {
     suspend fun fetchAllCategoryData():ResponseModel<ArrayList<CategoryModel>>
     @GET(Route.SHOW_ALL_CATEGORIES)
     suspend fun fetchAllProductData(
-        @Field("tag_id") tagId:String
+        @Query("tag_id") tagId:String
     ):ResponseModel<ArrayList<ProductModel>>
 
 }

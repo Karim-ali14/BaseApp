@@ -6,7 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:shimmer_auto_start="true"
     app:shimmer_base_color="@color/gray_color"
-    app:shimmer_highlight_color="@color/white">
+    app:shimmer_highlight_color="@color/white"
+    android:layout_marginVertical="@dimen/_3sdp">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="120dp"

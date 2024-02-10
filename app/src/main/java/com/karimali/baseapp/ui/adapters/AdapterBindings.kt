@@ -1,6 +1,5 @@
 package com.karimali.baseapp.ui.adapters
 
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Build
 import android.text.Html
@@ -210,16 +209,23 @@ object AdapterBindings {
                     GenericRecyclerAdapter(
                         item.products,
                         R.layout.product_horizontal_item_layout,
-                        productItemBinding()
+                        productHorizontalItemBinding()
                     ), isHorizontal = true
                 )
             }
         }
     }
 
-    fun productItemBinding() = object :GenericSimpleRecyclerBindingInterface<ProductModel>{
+    fun productHorizontalItemBinding() = object :GenericSimpleRecyclerBindingInterface<ProductModel>{
         override fun bindData(item: ProductModel, view: View, position: Int?) {
             DataBindingUtil.bind<ProductHorizontalItemLayoutBinding>(view)?.apply {
+                productItem = item
+            }
+        }
+    }
+    fun productItemBinding() = object :GenericSimpleRecyclerBindingInterface<ProductModel>{
+        override fun bindData(item: ProductModel, view: View, position: Int?) {
+            DataBindingUtil.bind<ProductItemLayoutBinding>(view)?.apply {
                 productItem = item
             }
         }

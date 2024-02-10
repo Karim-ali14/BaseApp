@@ -3,7 +3,10 @@ package com.karimali.baseapp.ui.fragments.showAllData
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.navArgs
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.JustifyContent
 import com.karimali.baseapp.R
+import com.karimali.baseapp.common.extensions.setupFlexed
 import com.karimali.baseapp.common.utils.Enums
 import com.karimali.baseapp.date.models.home.CategoryModel
 import com.karimali.baseapp.ui.adapters.AdapterBindings
@@ -27,7 +30,7 @@ class ShowAllSectionData :ShowAllDataFragment(){
     override fun bindData() {
         binding!!.apply {
             type = this@ShowAllSectionData.type
-            recycler.addAdapter(sectionAdapter, recyclerType = RecyclerLayoutTypes.Linear , shimmerLayoutRes = R.layout.shimmerd_section_item_layout)
+            recycler.addAdapter(sectionAdapter, recyclerType = RecyclerLayoutTypes.FlexedRow , shimmerLayoutRes = R.layout.shimmerd_section_item_layout)
         }
     }
     private fun fetchAllSections() {

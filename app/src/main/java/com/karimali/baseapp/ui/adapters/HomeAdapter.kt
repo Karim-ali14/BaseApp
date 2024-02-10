@@ -59,6 +59,8 @@ class HomeAdapter(
                 binding.seeAllBtu.setOnClickListener {
                     showAllSection()
                 }
+                binding.titleTxt.handleVisibility(sectionAdapter?.itemCount != 0)
+                binding.seeAllBtu.handleVisibility(sectionAdapter?.itemCount != 0)
                 sectionAdapter?.apply {
                     binding.recycler.setup(this, isHorizontal = true)
                 }
@@ -83,6 +85,9 @@ class HomeAdapter(
                 binding.seeAllBtu.setOnClickListener {
                     showAllServices()
                 }
+
+                binding.titleTxt.handleVisibility(servicesAdapter?.itemCount != 0)
+                binding.seeAllBtu.handleVisibility(servicesAdapter?.itemCount != 0)
                 servicesAdapter?.apply {
                     binding.recycler.setup(this, isHorizontal = true)
                 }

@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     style="@style/textStyleWithPriceColorMedium10dot56sp"
                     android:textAlignment="viewStart"
-                    android:text="@{String.format(@string/dollar_sign,serviceItem.price)}" />
+                    />
             </LinearLayout>
 
             <Space
