@@ -15,6 +15,7 @@ import com.karimali.baseapp.date.models.home.BannerModel
 import com.karimali.baseapp.date.models.home.CategoryModel
 import com.karimali.baseapp.date.models.home.HomeDateModel
 import com.karimali.baseapp.date.models.home.ProductCategoryModel
+import com.karimali.baseapp.date.models.home.ProductModel
 import com.karimali.baseapp.date.models.home.ServiceModel
 import com.karimali.baseapp.ui.adapters.AdapterBindings
 import com.karimali.baseapp.ui.adapters.GenericRecyclerAdapter
@@ -55,7 +56,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         productCategoryAdapter = GenericRecyclerAdapter(
             arrayListOf(),
             R.layout.see_all_title_item_layout,
-            AdapterBindings.productCategoryItemBinding(::navigateToShowAllProductsByTagId)
+            AdapterBindings.productCategoryItemBinding(::navigateToShowAllProductsByTagId,::onProductClick)
         )
         serviceAdapter = GenericRecyclerAdapter(
             arrayListOf(),
@@ -70,6 +71,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             showAllSection = ::navigateToShowAllSections,
             showAllServices = ::navigateToShowAllServices
         )
+    }
+
+    private fun onProductClick(productModel: ProductModel) {
+
     }
 
     private fun navigateToShowAllServices() {

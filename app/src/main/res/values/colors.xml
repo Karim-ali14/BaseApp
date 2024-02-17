@@ -13,6 +13,7 @@
 
     <color name="background_color">#101E33</color>
     <color name="dark_blue_color">#101E33</color>
+    <color name="light_blue_color">#292D32</color>
     <color name="dark_orange_color">#EE7818</color>
     <color name="orange_color">#F49321</color>
     <color name="gray_color">#B8BFC8</color>
@@ -25,4 +26,5 @@
     <color name="component_background_color">#F3F3F3</color>
     <color name="price_color">#0ABCB2</color>
     <color name="description_color">#0D0D0D</color>
+    <color name="stock_color">#F4F4F4</color>
 </resources>

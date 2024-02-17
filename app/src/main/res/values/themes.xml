@@ -32,6 +32,12 @@
         <item name="android:fontFamily">@font/inter_bold</item>
     </style>
 
+    <style name="textStyleWithPriceColorInterBold16sp">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/price_color</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+
     <style name="textStyleWithInterSemiBold24sp">
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>
@@ -42,6 +48,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>
         <item name="android:fontFamily">@font/inter_semi_bold</item>
+        <item name="android:textAlignment">viewStart</item>
     </style>
 
     <style name="textStyleWithInterBlack30sp">
@@ -75,6 +82,12 @@
         <item name="android:fontFamily">@font/inter_medium</item>
     </style>
 
+    <style name="textStyleWithHintColorInterRegular14sp">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/hint_color</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+    </style>
+
     <style name="textStyleWithColorSecondaryInterMedium11dot52sp">
         <item name="android:textSize">11.52sp</item>
         <item name="android:textColor">?attr/colorSecondary</item>
@@ -99,6 +112,24 @@
         <item name="android:textSize">11.52sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="textStyleWithLightBlueInterRegular12dot18sp">
+        <item name="android:textSize">12.18sp</item>
+        <item name="android:textColor">@color/light_blue_color</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="textStyleWithHintColorInterRegular12sp">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/hint_color</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="textStyleWithLightBlueColorInterRegular12sp">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/light_blue_color</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
@@ -146,6 +177,13 @@
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/see_all_color</item>
         <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="SeeAllTextStyleWithInterMedium18sp">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">?attr/colorSecondary</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 
 

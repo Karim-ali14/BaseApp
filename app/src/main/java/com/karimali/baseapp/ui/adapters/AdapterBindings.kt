@@ -198,7 +198,7 @@ object AdapterBindings {
         }
     }
 
-    fun productCategoryItemBinding(showAllAction:(ProductCategoryModel) -> Unit) = object :GenericSimpleRecyclerBindingInterface<ProductCategoryModel>{
+    fun productCategoryItemBinding(showAllAction:(ProductCategoryModel) -> Unit, onProductClick:(ProductModel)-> Unit) = object :GenericSimpleRecyclerBindingInterface<ProductCategoryModel>{
         override fun bindData(item: ProductCategoryModel, view: View,position: Int?) {
             DataBindingUtil.bind<SeeAllTitleItemLayoutBinding>(view)?.apply {
                 this.title = item.name_en
@@ -209,17 +209,20 @@ object AdapterBindings {
                     GenericRecyclerAdapter(
                         item.products,
                         R.layout.product_horizontal_item_layout,
-                        productHorizontalItemBinding()
+                        productHorizontalItemBinding(onProductClick)
                     ), isHorizontal = true
                 )
             }
         }
     }
 
-    fun productHorizontalItemBinding() = object :GenericSimpleRecyclerBindingInterface<ProductModel>{
+    fun productHorizontalItemBinding(onItemClick:(ProductModel)-> Unit) = object :GenericSimpleRecyclerBindingInterface<ProductModel>{
         override fun bindData(item: ProductModel, view: View, position: Int?) {
             DataBindingUtil.bind<ProductHorizontalItemLayoutBinding>(view)?.apply {
                 productItem = item
+                root.setOnClickListener {
+                    onItemClick.invoke(item)
+                }
             }
         }
     }
